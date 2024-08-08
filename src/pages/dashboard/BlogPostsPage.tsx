@@ -57,23 +57,19 @@ export default function BlogPostsPage() {
   return (
     <>
       <Helmet>
-        <title> Blog: Posts | NotPump</title>
+        <title> List tokens launch | NotPump</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <CustomBreadcrumbs
-          heading="Blog"
+          heading="List Tokens"
           links={[
             {
               name: 'Dashboard',
               href: PATH_DASHBOARD.root,
             },
             {
-              name: 'Blog',
-              href: PATH_DASHBOARD.blog.root,
-            },
-            {
-              name: 'Posts',
+              name: 'Tokens',
             },
           ]}
           action={
@@ -96,7 +92,7 @@ export default function BlogPostsPage() {
         <Grid container spacing={3}>
           {(!posts.length ? [...Array(12)] : sortedPosts).map((post, index) =>
             post ? (
-              <Grid key={post.id} item xs={12} sm={6} md={(index === 0 && 6) || 3}>
+              <Grid key={post.id} item xs={12} sm={6} md={3}>
                 <BlogPostCard post={post} index={index} />
               </Grid>
             ) : (

@@ -10,7 +10,7 @@ import axios from '../../../../utils/axios';
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // @types
-import { IProduct } from '../../../../@types/product';
+import { IDN404MetaData } from '../../../../@types/DN404';
 // components
 import Image from '../../../../components/image';
 import Iconify from '../../../../components/iconify';
@@ -58,7 +58,7 @@ export default function ShopProductSearch() {
       popupIcon={null}
       options={searchResults}
       onInputChange={(event, value) => handleChangeSearch(value)}
-      getOptionLabel={(product: IProduct) => product.name}
+      getOptionLabel={(product: IDN404MetaData) => product.name}
       noOptionsText={<SearchNotFound query={searchProducts} />}
       isOptionEqualToValue={(option, value) => option.id === value.id}
       componentsProps={{

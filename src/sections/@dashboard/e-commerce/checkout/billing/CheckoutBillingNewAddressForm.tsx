@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // @types
-import { ICheckoutBillingAddress } from '../../../../../@types/product';
+import { ICheckoutBillingAddress } from '../../../../../@types/DN404';
 // assets
 import { countries } from '../../../../../assets/data';
 import FormProvider, {

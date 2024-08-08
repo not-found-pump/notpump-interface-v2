@@ -16,11 +16,11 @@ import {
 import { SelectChangeEvent } from '@mui/material/Select';
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
-import { getProducts } from '../../redux/slices/product';
+import { getProducts } from '../../redux/slices/DN404';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // @types
-import { IProduct } from '../../@types/product';
+import { IDN404MetaData } from '../../@types/DN404';
 // components
 import { useSettingsContext } from '../../components/settings';
 import {
@@ -89,7 +89,7 @@ export default function EcommerceProductListPage() {
 
   const { products, isLoading } = useSelector((state) => state.product);
 
-  const [tableData, setTableData] = useState<IProduct[]>([]);
+  const [tableData, setTableData] = useState<IDN404MetaData[]>([]);
 
   const [filterName, setFilterName] = useState('');
 
@@ -339,7 +339,7 @@ function applyFilter({
   filterName,
   filterStatus,
 }: {
-  inputData: IProduct[];
+  inputData: IDN404MetaData[];
   comparator: (a: any, b: any) => number;
   filterName: string;
   filterStatus: string[];

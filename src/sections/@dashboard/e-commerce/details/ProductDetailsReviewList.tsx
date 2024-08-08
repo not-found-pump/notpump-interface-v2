@@ -5,14 +5,14 @@ import { Stack, Button, Rating, Avatar, Pagination, Typography } from '@mui/mate
 import { fDate } from '../../../../utils/formatTime';
 import { fShortenNumber } from '../../../../utils/formatNumber';
 // @types
-import { IProductReview } from '../../../../@types/product';
+import { IDN404MetaDataReview } from '../../../../@types/DN404';
 // components
 import Iconify from '../../../../components/iconify';
 
 // ----------------------------------------------------------------------
 
 type Props = {
-  reviews: IProductReview[];
+  reviews: IDN404MetaDataReview[];
 };
 
 export default function ProductDetailsReviewList({ reviews }: Props) {
@@ -56,7 +56,7 @@ export default function ProductDetailsReviewList({ reviews }: Props) {
 // ----------------------------------------------------------------------
 
 type ReviewItemProps = {
-  review: IProductReview;
+  review: IDN404MetaDataReview;
 };
 
 function ReviewItem({ review }: ReviewItemProps) {

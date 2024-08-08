@@ -20,7 +20,7 @@ import { PATH_DASHBOARD } from '../../../../routes/paths';
 // utils
 import { fShortenNumber, fCurrency } from '../../../../utils/formatNumber';
 // @types
-import { IProduct, ICheckoutCartItem } from '../../../../@types/product';
+import { IDN404MetaData, ICheckoutCartItem } from '../../../../@types/DN404';
 // _mock
 import { _socials } from '../../../../_mock/arrays';
 // components
@@ -37,7 +37,7 @@ interface FormValuesProps extends Omit<ICheckoutCartItem, 'colors'> {
 }
 
 type Props = {
-  product: IProduct;
+  product: IDN404MetaData;
   cart: ICheckoutCartItem[];
   onAddCart: (cartItem: ICheckoutCartItem) => void;
   onGotoStep: (step: number) => void;

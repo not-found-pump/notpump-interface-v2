@@ -19,9 +19,9 @@ import {
   applyDiscount,
   increaseQuantity,
   decreaseQuantity,
-} from '../../redux/slices/product';
+} from '../../redux/slices/DN404';
 // @types
-import { ICheckoutBillingAddress } from '../../@types/product';
+import { ICheckoutBillingAddress } from '../../@types/DN404';
 // components
 import CustomBreadcrumbs from '../../components/custom-breadcrumbs';
 import { useSettingsContext } from '../../components/settings';

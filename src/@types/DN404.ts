@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-export type IProductReview = {
+export type IDN404MetaDataReview = {
   id: string;
   name: string;
   avatarUrl: string;
@@ -11,11 +11,10 @@ export type IProductReview = {
   postedAt: Date | string | number;
 };
 
-export type IProduct = {
+export type IDN404MetaData = {
   id: string;
   coverUrl: string;
   images: string[];
-  name: string;
   price: number;
   code: string;
   sku: string;
@@ -28,7 +27,7 @@ export type IProduct = {
     starCount: number;
     reviewCount: number;
   }[];
-  reviews: IProductReview[];
+  reviews: IDN404MetaDataReview[];
   colors: string[];
   status: string;
   inventoryType: string;
@@ -39,9 +38,18 @@ export type IProduct = {
   createdAt: Date | string | number;
   category: string;
   gender: string;
+  // DN404
+  name: string;
+  symbol: string;
+  wallet: string;
+  contract?: string;
+  bondingCurveProccess?: number;
+  marketCap?: number;
+  holdersCount?: number;
+  totalDeposit?: number;
 };
 
-export type IProductFilter = {
+export type IDN404MetaDataFilter = {
   gender: string[];
   category: string;
   colors: string[];
@@ -92,7 +100,7 @@ export type ICheckoutCardOption = {
 
 // ----------------------------------------------------------------------
 
-export type IProductCheckoutState = {
+export type IDN404MetaDataCheckoutState = {
   activeStep: number;
   cart: ICheckoutCartItem[];
   subtotal: number;
@@ -103,10 +111,10 @@ export type IProductCheckoutState = {
   totalItems: number;
 };
 
-export type IProductState = {
+export type IDN404MetaDataState = {
   isLoading: boolean;
   error: Error | string | null;
-  products: IProduct[];
-  product: IProduct | null;
-  checkout: IProductCheckoutState;
+  products: IDN404MetaData[];
+  product: IDN404MetaData | null;
+  checkout: IDN404MetaDataCheckoutState;
 };

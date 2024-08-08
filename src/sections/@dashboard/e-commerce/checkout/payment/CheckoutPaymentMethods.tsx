@@ -19,7 +19,7 @@ import {
   FormControlLabel,
 } from '@mui/material';
 // @types
-import { ICheckoutCardOption, ICheckoutPaymentOption } from '../../../../../@types/product';
+import { ICheckoutCardOption, ICheckoutPaymentOption } from '../../../../../@types/DN404';
 // components
 import Image from '../../../../../components/image';
 import Iconify from '../../../../../components/iconify';

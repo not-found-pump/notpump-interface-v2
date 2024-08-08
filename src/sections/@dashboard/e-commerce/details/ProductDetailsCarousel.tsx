@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 // utils
 import { bgGradient } from '../../../../utils/cssStyles';
 // @types
-import { IProduct } from '../../../../@types/product';
+import { IDN404MetaData } from '../../../../@types/DN404';
 // components
 import Image from '../../../../components/image';
 import Lightbox from '../../../../components/lightbox';
@@ -71,7 +71,7 @@ const StyledThumbnailsContainer = styled('div', {
 // ----------------------------------------------------------------------
 
 type Props = {
-  product: IProduct;
+  product: IDN404MetaData;
 };
 
 export default function ProductDetailsCarousel({ product }: Props) {

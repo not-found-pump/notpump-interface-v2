@@ -14,7 +14,7 @@ import {
   FormControlLabel,
 } from '@mui/material';
 // @types
-import { ICheckoutDeliveryOption } from '../../../../../@types/product';
+import { ICheckoutDeliveryOption } from '../../../../../@types/DN404';
 // components
 import Iconify from '../../../../../components/iconify';
 

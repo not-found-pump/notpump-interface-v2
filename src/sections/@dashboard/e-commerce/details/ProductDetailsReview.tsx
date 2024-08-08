@@ -5,7 +5,7 @@ import { Divider, Typography, Rating, Button, LinearProgress, Stack, Box } from 
 // utils
 import { fShortenNumber } from '../../../../utils/formatNumber';
 // @types
-import { IProduct } from '../../../../@types/product';
+import { IDN404MetaData } from '../../../../@types/DN404';
 // components
 import Iconify from '../../../../components/iconify';
 //
@@ -15,7 +15,7 @@ import ProductDetailsReviewNewDialog from './ProductDetailsNewReviewForm';
 // ----------------------------------------------------------------------
 
 type Props = {
-  product: IProduct;
+  product: IDN404MetaData;
 };
 
 export default function ProductDetailsReview({ product }: Props) {

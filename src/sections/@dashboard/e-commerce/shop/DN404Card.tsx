@@ -1,16 +1,18 @@
 import { paramCase } from 'change-case';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
-import { Box, Card, Link, Stack, Fab } from '@mui/material';
+import { Box, Card, Link, Stack, Fab, Typography } from '@mui/material';
 // routes
+import TextMaxLine from 'src/components/text-max-line';
+import {formatAddress} from 'src/utils/formatAddress';
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // utils
-import { fCurrency } from '../../../../utils/formatNumber';
+import { fCurrency, fShortenNumber } from '../../../../utils/formatNumber';
 // redux
 import { useDispatch } from '../../../../redux/store';
-import { addToCart } from '../../../../redux/slices/product';
+import { addToCart } from '../../../../redux/slices/DN404';
 // @types
-import { IProduct } from '../../../../@types/product';
+import { IDN404MetaData } from '../../../../@types/DN404';
 // components
 import Iconify from '../../../../components/iconify';
 import Label from '../../../../components/label';
@@ -20,11 +22,12 @@ import { ColorPreview } from '../../../../components/color-utils';
 // ----------------------------------------------------------------------
 
 type Props = {
-  product: IProduct;
+  product: IDN404MetaData;
 };
+const  WALLET =  "0xDA216D50E16fBcf7AbF71A68403FcCf39Cc884e0"
 
-export default function ShopProductCard({ product }: Props) {
-  const { id, name, coverUrl, price, colors, status, available, sizes, priceSale } = product;
+export default function DN404Card({ product }: Props) {
+  const { id, name, coverUrl, price, colors, status, available, sizes, priceSale , description} = product;
 
   const dispatch = useDispatch();
 
@@ -47,6 +50,7 @@ export default function ShopProductCard({ product }: Props) {
       console.error(error);
     }
   };
+
 
   return (
     <Card
@@ -96,23 +100,24 @@ export default function ShopProductCard({ product }: Props) {
 
         <Image alt={name} src={coverUrl} ratio="1/1" sx={{ borderRadius: 1.5 }} />
       </Box>
-
+ 
       <Stack spacing={2.5} sx={{ p: 3 }}>
         <Link component={RouterLink} to={linkTo} color="inherit" variant="subtitle2" noWrap>
-          {name}
+          {name.split(' ')[0].toUpperCase()} / {name}
         </Link>
+           <Typography sx={{ color: 'text.secondary' }}>{formatAddress(WALLET)}</Typography>
 
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <ColorPreview colors={colors} />
 
           <Stack direction="row" spacing={0.5} sx={{ typography: 'subtitle1' }}>
-            {priceSale && (
+            {/* {priceSale && (
               <Box component="span" sx={{ color: 'text.disabled', textDecoration: 'line-through' }}>
                 {fCurrency(priceSale)}
               </Box>
-            )}
+            )} */}
 
-            <Box component="span">{fCurrency(price)}</Box>
+            <Box component="span">{fCurrency(price / 100_000)}</Box>
           </Stack>
         </Stack>
       </Stack>

@@ -10,7 +10,7 @@ import { Box, Card, Grid, Stack, Typography, InputAdornment } from '@mui/materia
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // @types
-import { IProduct } from '../../../@types/product';
+import { IDN404MetaData } from '../../../@types/DN404';
 // components
 import { CustomFile } from '../../../components/upload';
 import { useSnackbar } from '../../../components/snackbar';
@@ -56,7 +56,7 @@ const TAGS_OPTION = [
 
 // ----------------------------------------------------------------------
 
-interface FormValuesProps extends Omit<IProduct, 'images'> {
+interface FormValuesProps extends Omit<IDN404MetaData, 'images'> {
   taxes: boolean;
   inStock: boolean;
   images: (CustomFile | string)[];
@@ -64,7 +64,7 @@ interface FormValuesProps extends Omit<IProduct, 'images'> {
 
 type Props = {
   isEdit?: boolean;
-  currentProduct?: IProduct;
+  currentProduct?: IDN404MetaData;
 };
 
 export default function ProductNewEditForm({ isEdit, currentProduct }: Props) {

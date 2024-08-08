@@ -10,8 +10,8 @@ import {
   ICheckoutCardOption,
   ICheckoutPaymentOption,
   ICheckoutDeliveryOption,
-  IProductCheckoutState,
-} from '../../../../../@types/product';
+  IDN404MetaDataCheckoutState,
+} from '../../../../../@types/DN404';
 // components
 import Iconify from '../../../../../components/iconify';
 import FormProvider from '../../../../../components/hook-form';
@@ -64,7 +64,7 @@ const CARDS_OPTIONS: ICheckoutCardOption[] = [
 ];
 
 type Props = {
-  checkout: IProductCheckoutState;
+  checkout: IDN404MetaDataCheckoutState;
   onNextStep: VoidFunction;
   onBackStep: VoidFunction;
   onReset: VoidFunction;

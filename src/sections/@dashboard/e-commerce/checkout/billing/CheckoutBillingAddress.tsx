@@ -2,7 +2,7 @@ import { useState } from 'react';
 // @mui
 import { Grid, Card, Button, Typography, Stack, Box } from '@mui/material';
 // @types
-import { ICheckoutBillingAddress, IProductCheckoutState } from '../../../../../@types/product';
+import { ICheckoutBillingAddress, IDN404MetaDataCheckoutState } from '../../../../../@types/DN404';
 // _mock
 import { _addressBooks } from '../../../../../_mock/arrays';
 // components
@@ -15,7 +15,7 @@ import CheckoutBillingNewAddressForm from './CheckoutBillingNewAddressForm';
 // ----------------------------------------------------------------------
 
 type Props = {
-  checkout: IProductCheckoutState;
+  checkout: IDN404MetaDataCheckoutState;
   onBackStep: VoidFunction;
   onCreateBilling: (address: ICheckoutBillingAddress) => void;
 };

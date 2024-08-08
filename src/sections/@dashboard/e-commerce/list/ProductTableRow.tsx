@@ -15,7 +15,7 @@ import {
 import { fDate } from '../../../../utils/formatTime';
 import { fCurrency } from '../../../../utils/formatNumber';
 // @types
-import { IProduct } from '../../../../@types/product';
+import { IDN404MetaData } from '../../../../@types/DN404';
 // components
 import Label from '../../../../components/label';
 import Image from '../../../../components/image';
@@ -26,7 +26,7 @@ import ConfirmDialog from '../../../../components/confirm-dialog';
 // ----------------------------------------------------------------------
 
 type Props = {
-  row: IProduct;
+  row: IDN404MetaData;
   selected: boolean;
   onEditRow: VoidFunction;
   onViewRow: VoidFunction;

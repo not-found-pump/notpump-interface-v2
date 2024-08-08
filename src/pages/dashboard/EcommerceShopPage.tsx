@@ -7,11 +7,11 @@ import { useForm } from 'react-hook-form';
 import { Container, Typography, Stack } from '@mui/material';
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
-import { getProducts } from '../../redux/slices/product';
+import { getProducts } from '../../redux/slices/DN404';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // @types
-import { IProduct, IProductFilter } from '../../@types/product';
+import { IDN404MetaData, IDN404MetaDataFilter } from '../../@types/DN404';
 // components
 import FormProvider from '../../components/hook-form';
 import CustomBreadcrumbs from '../../components/custom-breadcrumbs';
@@ -20,7 +20,7 @@ import { useSettingsContext } from '../../components/settings';
 import {
   ShopTagFiltered,
   ShopProductSort,
-  ShopProductList,
+  DN404List,
   ShopFilterDrawer,
   ShopProductSearch,
 } from '../../sections/@dashboard/e-commerce/shop';
@@ -46,7 +46,7 @@ export default function EcommerceShopPage() {
     sortBy: 'featured',
   };
 
-  const methods = useForm<IProductFilter>({
+  const methods = useForm<IDN404MetaDataFilter>({
     defaultValues,
   });
 
@@ -139,7 +139,7 @@ export default function EcommerceShopPage() {
             )}
           </Stack>
 
-          <ShopProductList products={dataFiltered} loading={!products.length && isDefault} />
+          <DN404List products={dataFiltered} loading={!products.length && isDefault} />
 
           <CartWidget totalItems={checkout.totalItems} />
         </Container>
@@ -150,7 +150,7 @@ export default function EcommerceShopPage() {
 
 // ----------------------------------------------------------------------
 
-function applyFilter(products: IProduct[], filters: IProductFilter) {
+function applyFilter(products: IDN404MetaData[], filters: IDN404MetaDataFilter) {
   const { gender, category, colors, priceRange, rating, sortBy } = filters;
 
   const min = priceRange[0];

@@ -1,7 +1,7 @@
 // @mui
 import { Table, TableBody, TableContainer } from '@mui/material';
 // @types
-import { ICheckoutCartItem } from '../../../../../@types/product';
+import { ICheckoutCartItem } from '../../../../../@types/DN404';
 // components
 import Scrollbar from '../../../../../components/scrollbar';
 import { TableHeadCustom } from '../../../../../components/table';

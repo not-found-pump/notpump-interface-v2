@@ -5,7 +5,7 @@ import { Grid, Card, Button, CardHeader, Typography } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../../../../routes/paths';
 // @types
-import { IProductCheckoutState } from '../../../../../@types/product';
+import { IDN404MetaDataCheckoutState } from '../../../../../@types/DN404';
 // components
 import Iconify from '../../../../../components/iconify';
 import EmptyContent from '../../../../../components/empty-content';
@@ -16,7 +16,7 @@ import CheckoutCartProductList from './CheckoutCartProductList';
 // ----------------------------------------------------------------------
 
 type Props = {
-  checkout: IProductCheckoutState;
+  checkout: IDN404MetaDataCheckoutState;
   onNextStep: VoidFunction;
   onApplyDiscount: (value: number) => void;
   onDeleteCart: (productId: string) => void;

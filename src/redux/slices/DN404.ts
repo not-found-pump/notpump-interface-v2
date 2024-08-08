@@ -4,11 +4,11 @@ import uniqBy from 'lodash/uniqBy';
 import { createSlice, Dispatch } from '@reduxjs/toolkit';
 // utils
 import axios from '../../utils/axios';
-import { IProductState, ICheckoutCartItem } from '../../@types/product';
+import { IDN404MetaDataState, ICheckoutCartItem } from '../../@types/DN404';
 
 // ----------------------------------------------------------------------
 
-const initialState: IProductState = {
+const initialState: IDN404MetaDataState = {
   isLoading: false,
   error: null,
   products: [],

@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage';
 // slices
 import mailReducer from './slices/mail';
 import chatReducer from './slices/chat';
-import productReducer from './slices/product';
+import productReducer from './slices/DN404';
 import calendarReducer from './slices/calendar';
 import kanbanReducer from './slices/kanban';
 

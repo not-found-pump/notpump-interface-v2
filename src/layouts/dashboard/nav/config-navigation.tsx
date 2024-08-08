@@ -72,9 +72,10 @@ const navConfig = [
       // USER
       // { title: 'wallet', icon: ICONS.user, path: PATH_DASHBOARD.user.profile },
       {
-        title: 'Token',
+        title: 'Tokens',
         path: PATH_DASHBOARD.eCommerce.shop,
         icon: ICONS.menuItem,
+        caption: 'NotPump use DN404 as a main token - is an implementation of a co-joined ERC20 and ERC721 pair.',
         children: [
           { title: 'Tokenft', icon: ICONS.blog, path: PATH_DASHBOARD.blog.posts },
         ]

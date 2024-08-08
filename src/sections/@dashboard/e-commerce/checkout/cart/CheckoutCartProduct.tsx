@@ -3,7 +3,7 @@ import { Box, Stack, Divider, TableRow, TableCell, Typography, IconButton } from
 // utils
 import { fCurrency } from '../../../../../utils/formatNumber';
 // @types
-import { ICheckoutCartItem } from '../../../../../@types/product';
+import { ICheckoutCartItem } from '../../../../../@types/DN404';
 // components
 import Image from '../../../../../components/image';
 import Label from '../../../../../components/label';

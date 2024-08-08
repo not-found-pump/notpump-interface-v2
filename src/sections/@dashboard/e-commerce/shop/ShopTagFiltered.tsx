@@ -5,7 +5,7 @@ import { useFormContext } from 'react-hook-form';
 import { useTheme } from '@mui/material/styles';
 import { Chip, Stack, Button, Box, StackProps } from '@mui/material';
 // @type
-import { IProductFilter } from '../../../../@types/product';
+import { IDN404MetaDataFilter } from '../../../../@types/DN404';
 // components
 import Iconify from '../../../../components/iconify';
 
@@ -29,7 +29,7 @@ export default function ShopTagFiltered({ isFiltered, onResetFilter }: Props) {
     colors: filterColors,
     priceRange: filterPriceRange,
     rating: filterRating,
-  } = values as IProductFilter;
+  } = values as IDN404MetaDataFilter;
 
   const min = filterPriceRange[0];
 

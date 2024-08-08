@@ -6,11 +6,11 @@ import { alpha } from '@mui/material/styles';
 import { Box, Tab, Tabs, Card, Grid, Divider, Container, Typography, Stack } from '@mui/material';
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
-import { getProduct, addToCart, gotoStep } from '../../redux/slices/product';
+import { getProduct, addToCart, gotoStep } from '../../redux/slices/DN404';
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // @types
-import { ICheckoutCartItem } from '../../@types/product';
+import { ICheckoutCartItem } from '../../@types/DN404';
 // components
 import Iconify from '../../components/iconify';
 import Markdown from '../../components/markdown';

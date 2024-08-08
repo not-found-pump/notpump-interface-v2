@@ -1,7 +1,7 @@
 // @mui
 import { Card, Button, Typography, CardHeader, CardContent } from '@mui/material';
 // @types
-import { ICheckoutBillingAddress } from '../../../../../@types/product';
+import { ICheckoutBillingAddress } from '../../../../../@types/DN404';
 // components
 import Iconify from '../../../../../components/iconify';
 
