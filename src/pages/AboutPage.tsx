@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <>
       <Helmet>
-        <title> About us | Minimal UI</title>
+        <title> About us | NotPump</title>
       </Helmet>
 
       <AboutHero />

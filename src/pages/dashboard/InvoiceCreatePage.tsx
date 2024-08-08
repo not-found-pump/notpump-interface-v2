@@ -17,7 +17,7 @@ export default function InvoiceCreatePage() {
   return (
     <>
       <Helmet>
-        <title> Invoices: Create a new invoice | Minimal UI</title>
+        <title> Invoices: Create a new invoice | NotPump</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

@@ -187,7 +187,7 @@ export default function UserListPage() {
   return (
     <>
       <Helmet>
-        <title> User: List | Minimal UI</title>
+        <title> User: List | NotPump</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>

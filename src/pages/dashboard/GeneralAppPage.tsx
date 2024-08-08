@@ -42,7 +42,7 @@ export default function GeneralAppPage() {
   return (
     <>
       <Helmet>
-        <title> General: App | Minimal UI</title>
+        <title> General: App | NotPump</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'xl'}>

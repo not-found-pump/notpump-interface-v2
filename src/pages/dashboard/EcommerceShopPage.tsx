@@ -87,7 +87,7 @@ export default function EcommerceShopPage() {
   return (
     <>
       <Helmet>
-        <title> Ecommerce: Shop | Minimal UI</title>
+        <title> Ecommerce: Shop | NotPump</title>
       </Helmet>
 
       <FormProvider methods={methods}>
