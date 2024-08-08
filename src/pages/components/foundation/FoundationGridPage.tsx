@@ -54,7 +54,7 @@ export default function FoundationGridPage() {
   return (
     <>
       <Helmet>
-        <title> Foundations: Grid | Minimal UI</title>
+        <title> Foundations: Grid | NotPump</title>
       </Helmet>
 
       <Box

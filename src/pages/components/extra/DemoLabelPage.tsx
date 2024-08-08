@@ -19,7 +19,7 @@ export default function DemoLabelPage() {
   return (
     <>
       <Helmet>
-        <title> Extra Components: Label | Minimal UI</title>
+        <title> Extra Components: Label | NotPump</title>
       </Helmet>
 
       <Box

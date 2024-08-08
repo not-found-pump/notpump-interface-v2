@@ -64,7 +64,7 @@ export default function MUIProgressPage() {
   return (
     <>
       <Helmet>
-        <title> MUI Components: Progress | Minimal UI</title>
+        <title> MUI Components: Progress | NotPump</title>
       </Helmet>
 
       <Box
