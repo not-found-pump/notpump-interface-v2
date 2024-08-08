@@ -27,7 +27,6 @@ export default function InvoiceAnalytic({ title, total, icon, color, percent, pr
     >
       <Stack alignItems="center" justifyContent="center" sx={{ position: 'relative' }}>
         <Iconify icon={icon} width={24} sx={{ color, position: 'absolute' }} />
-
         <CircularProgress
           variant="determinate"
           value={percent}
