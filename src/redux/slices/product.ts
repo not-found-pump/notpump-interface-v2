@@ -210,8 +210,8 @@ export function getProduct(name: string) {
   return async (dispatch: Dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.get('/api/products/product', {
-        params: { name },
+      const response = await axios.get('/api/product/details', {
+        params: { productId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b2' },
       });
       dispatch(slice.actions.getProductSuccess(response.data.product));
     } catch (error) {
