@@ -40,7 +40,7 @@ export default function BlogPostPage() {
 
   const getPost = useCallback(async () => {
     try {
-      const response = await axios.get('/api/blog/post', {
+      const response = await axios.get('/api/post/list', {
         params: { title },
       });
       setPost(response.data.post);

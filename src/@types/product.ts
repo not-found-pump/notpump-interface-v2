@@ -13,7 +13,7 @@ export type IProductReview = {
 
 export type IProduct = {
   id: string;
-  cover: string;
+  coverUrl: string;
   images: string[];
   name: string;
   price: number;

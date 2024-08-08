@@ -42,7 +42,7 @@ export default function ProductTableRow({
   onEditRow,
   onViewRow,
 }: Props) {
-  const { name, cover, createdAt, inventoryType, price } = row;
+  const { name, coverUrl, createdAt, inventoryType, price } = row;
 
   const [openConfirm, setOpenConfirm] = useState(false);
 
@@ -77,7 +77,7 @@ export default function ProductTableRow({
               disabledEffect
               visibleByDefault
               alt={name}
-              src={cover}
+              src={coverUrl}
               sx={{ borderRadius: 1.5, width: 48, height: 48 }}
             />
 

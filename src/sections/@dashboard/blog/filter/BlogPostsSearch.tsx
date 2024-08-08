@@ -92,15 +92,15 @@ export default function BlogPostsSearch() {
         />
       )}
       renderOption={(props, post, { inputValue }) => {
-        const { title, cover } = post;
+        const { title, coverUrl } = post;
         const matches = match(title, inputValue);
         const parts = parse(title, matches);
 
         return (
           <li {...props}>
             <Image
-              alt={cover}
-              src={cover}
+              alt={coverUrl}
+              src={coverUrl}
               sx={{ width: 48, height: 48, borderRadius: 1, flexShrink: 0, mr: 1.5 }}
             />
 

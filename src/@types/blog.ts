@@ -37,7 +37,7 @@ export type IBlogNewPost = {
 
 export type IBlogPost = {
   id: string;
-  cover: string;
+  coverUrl: string;
   title: string;
   description: string;
   createdAt: Date | string | number;

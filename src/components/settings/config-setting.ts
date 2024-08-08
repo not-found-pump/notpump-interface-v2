@@ -4,10 +4,10 @@ import { SettingsValueProps } from './types';
 // ----------------------------------------------------------------------
 
 export const defaultSettings: SettingsValueProps = {
-  themeMode: 'light',
+  themeMode: 'dark',
   themeDirection: 'ltr',
   themeContrast: 'default',
-  themeLayout: 'vertical',
+  themeLayout: 'horizontal',
   themeColorPresets: 'default',
   themeStretch: false,
 };

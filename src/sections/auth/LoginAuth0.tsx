@@ -16,7 +16,7 @@ export default function LoginAuth0() {
   const handleLoginAuth0 = async () => {
     try {
       // NOTE: Turn off comments below to enable Auth0.
-      await login('demo@minimals.cc', "demo1234");
+      await login('demo@minimals.cc', 'demo1234');
     } catch (error) {
       console.error(error);
     }

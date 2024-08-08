@@ -39,7 +39,7 @@ type Props = {
 export default function BlogPostCard({ post, index }: Props) {
   const isDesktop = useResponsive('up', 'md');
 
-  const { cover, title, view, comment, share, author, createdAt } = post;
+  const { coverUrl, title, view, comment, share, author, createdAt } = post;
 
   const latestPost = index === 0 || index === 1 || index === 2;
 
@@ -68,7 +68,7 @@ export default function BlogPostCard({ post, index }: Props) {
 
         <StyledOverlay />
 
-        <Image alt="cover" src={cover} sx={{ height: 360 }} />
+        <Image alt="cover" src={coverUrl} sx={{ height: 360 }} />
       </Card>
     );
   }
@@ -101,7 +101,7 @@ export default function BlogPostCard({ post, index }: Props) {
           }}
         />
 
-        <Image alt="cover" src={cover} ratio="4/3" />
+        <Image alt="cover" src={coverUrl} ratio="4/3" />
       </Box>
 
       <PostContent

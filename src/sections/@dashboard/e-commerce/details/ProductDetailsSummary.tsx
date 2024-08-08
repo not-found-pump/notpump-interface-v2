@@ -57,7 +57,7 @@ export default function ProductDetailsSummary({
     name,
     sizes,
     price,
-    cover,
+    coverUrl,
     status,
     colors,
     available,
@@ -75,7 +75,7 @@ export default function ProductDetailsSummary({
   const defaultValues = {
     id,
     name,
-    cover,
+    coverUrl,
     available,
     price,
     colors: colors[0],

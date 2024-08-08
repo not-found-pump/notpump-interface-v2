@@ -42,13 +42,19 @@ const navConfig = [
     subheader: 'general',
     items: [
       { title: 'app', path: PATH_DASHBOARD.general.app, icon: ICONS.dashboard },
-      { title: 'ecommerce', path: PATH_DASHBOARD.general.ecommerce, icon: ICONS.ecommerce },
+      // { title: 'ecommerce', path: PATH_DASHBOARD.general.ecommerce, icon: ICONS.ecommerce },
       { title: 'analytics', path: PATH_DASHBOARD.general.analytics, icon: ICONS.analytics },
       { title: 'banking', path: PATH_DASHBOARD.general.banking, icon: ICONS.banking },
-      { title: 'booking', path: PATH_DASHBOARD.general.booking, icon: ICONS.booking },
-      { title: 'file', path: PATH_DASHBOARD.general.file, icon: ICONS.file },
+      // { title: 'booking', path: PATH_DASHBOARD.general.booking, icon: ICONS.booking },
+      // { title: 'file', path: PATH_DASHBOARD.general.file, icon: ICONS.file },
     ],
   },
+  // { title: 'user', subheader: 'user', path: PATH_DASHBOARD.user.profile, items: [] },
+  // {
+  //       title: 'blank',
+  //       path: PATH_DASHBOARD.user.profile,
+  //       icon: ICONS.blank,
+  // },
 
   // MANAGEMENT
   // ----------------------------------------------------------------------
@@ -56,45 +62,56 @@ const navConfig = [
     subheader: 'management',
     items: [
       // USER
+      { title: 'wallet', icon: ICONS.user, path: PATH_DASHBOARD.user.profile },
       {
-        title: 'user',
-        path: PATH_DASHBOARD.user.root,
-        icon: ICONS.user,
-        children: [
-          { title: 'profile', path: PATH_DASHBOARD.user.profile },
-          { title: 'cards', path: PATH_DASHBOARD.user.cards },
-          { title: 'list', path: PATH_DASHBOARD.user.list },
-          { title: 'create', path: PATH_DASHBOARD.user.new },
-          { title: 'edit', path: PATH_DASHBOARD.user.demoEdit },
-          { title: 'account', path: PATH_DASHBOARD.user.account },
-        ],
+        title: 'Fair launch',
+        path: PATH_DASHBOARD.eCommerce.shop,
+        icon: ICONS.cart,
       },
+      {
+        title: 'Docs',
+        path: 'https://www.google.com/',
+        icon: ICONS.blog,
+      },
+      // {
+      //   title: 'user',
+      //   path: PATH_DASHBOARD.user.root,
+      //   icon: ICONS.user,
+      //   children: [
+      //     { title: 'profile', path: PATH_DASHBOARD.user.profile },
+      //     { title: 'cards', path: PATH_DASHBOARD.user.cards },
+      //     { title: 'list', path: PATH_DASHBOARD.user.list },
+      //     { title: 'create', path: PATH_DASHBOARD.user.new },
+      //     { title: 'edit', path: PATH_DASHBOARD.user.demoEdit },
+      //     { title: 'account', path: PATH_DASHBOARD.user.account },
+      //   ],
+      // },
 
       // E-COMMERCE
-      {
-        title: 'ecommerce',
-        path: PATH_DASHBOARD.eCommerce.root,
-        icon: ICONS.cart,
-        children: [
-          { title: 'shop', path: PATH_DASHBOARD.eCommerce.shop },
-          { title: 'product', path: PATH_DASHBOARD.eCommerce.demoView },
-          { title: 'list', path: PATH_DASHBOARD.eCommerce.list },
-          { title: 'create', path: PATH_DASHBOARD.eCommerce.new },
-          { title: 'edit', path: PATH_DASHBOARD.eCommerce.demoEdit },
-          { title: 'checkout', path: PATH_DASHBOARD.eCommerce.checkout },
-        ],
-      },
+      // {
+      //   title: 'ecommerce',
+      //   path: PATH_DASHBOARD.eCommerce.root,
+      //   icon: ICONS.cart,
+      //   children: [
+      //     { title: 'shop', path: PATH_DASHBOARD.eCommerce.shop },
+      //     { title: 'product', path: PATH_DASHBOARD.eCommerce.demoView },
+      //     { title: 'list', path: PATH_DASHBOARD.eCommerce.list },
+      //     { title: 'create', path: PATH_DASHBOARD.eCommerce.new },
+      //     { title: 'edit', path: PATH_DASHBOARD.eCommerce.demoEdit },
+      //     { title: 'checkout', path: PATH_DASHBOARD.eCommerce.checkout },
+      //   ],
+      // },
 
       // INVOICE
       {
-        title: 'invoice',
+        title: 'Derivatives',
         path: PATH_DASHBOARD.invoice.root,
         icon: ICONS.invoice,
         children: [
           { title: 'list', path: PATH_DASHBOARD.invoice.list },
           { title: 'details', path: PATH_DASHBOARD.invoice.demoView },
-          { title: 'create', path: PATH_DASHBOARD.invoice.new },
-          { title: 'edit', path: PATH_DASHBOARD.invoice.demoEdit },
+          // { title: 'create', path: PATH_DASHBOARD.invoice.new },
+          // { title: 'edit', path: PATH_DASHBOARD.invoice.demoEdit },
         ],
       },
 
@@ -119,32 +136,32 @@ const navConfig = [
 
   // APP
   // ----------------------------------------------------------------------
-  {
-    subheader: 'app',
-    items: [
-      {
-        title: 'mail',
-        path: PATH_DASHBOARD.mail.root,
-        icon: ICONS.mail,
-        info: <Label color="error">+32</Label>,
-      },
-      {
-        title: 'chat',
-        path: PATH_DASHBOARD.chat.root,
-        icon: ICONS.chat,
-      },
-      {
-        title: 'calendar',
-        path: PATH_DASHBOARD.calendar,
-        icon: ICONS.calendar,
-      },
-      {
-        title: 'kanban',
-        path: PATH_DASHBOARD.kanban,
-        icon: ICONS.kanban,
-      },
-    ],
-  },
+  // {
+  //   subheader: 'app',
+  //   items: [
+  //     {
+  //       title: 'mail',
+  //       path: PATH_DASHBOARD.mail.root,
+  //       icon: ICONS.mail,
+  //       info: <Label color="error">+32</Label>,
+  //     },
+  //     {
+  //       title: 'chat',
+  //       path: PATH_DASHBOARD.chat.root,
+  //       icon: ICONS.chat,
+  //     },
+  //     {
+  //       title: 'calendar',
+  //       path: PATH_DASHBOARD.calendar,
+  //       icon: ICONS.calendar,
+  //     },
+  //     {
+  //       title: 'kanban',
+  //       path: PATH_DASHBOARD.kanban,
+  //       icon: ICONS.kanban,
+  //     },
+  //   ],
+  // },
 
   // DEMO MENU STATES
   {
@@ -162,75 +179,70 @@ const navConfig = [
         roles: ['admin'],
         caption: 'only_admin_can_see_this_item',
       },
-      {
-        title: 'menu_level',
-        path: '#/dashboard/menu_level',
-        icon: ICONS.menuItem,
-        children: [
-          {
-            title: 'menu_level_2a',
-            path: '#/dashboard/menu_level/menu_level_2a',
-          },
-          {
-            title: 'menu_level_2b',
-            path: '#/dashboard/menu_level/menu_level_2b',
-            children: [
-              {
-                title: 'menu_level_3a',
-                path: '#/dashboard/menu_level/menu_level_2b/menu_level_3a',
-              },
-              {
-                title: 'menu_level_3b',
-                path: '#/dashboard/menu_level/menu_level_2b/menu_level_3b',
-                children: [
-                  {
-                    title: 'menu_level_4a',
-                    path: '#/dashboard/menu_level/menu_level_2b/menu_level_3b/menu_level_4a',
-                  },
-                  {
-                    title: 'menu_level_4b',
-                    path: '#/dashboard/menu_level/menu_level_2b/menu_level_3b/menu_level_4b',
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        title: 'item_disabled',
-        path: '#disabled',
-        icon: ICONS.disabled,
-        disabled: true,
-      },
+      // {
+      //   title: 'menu_level',
+      //   path: '#/dashboard/menu_level',
+      //   icon: ICONS.menuItem,
+      //   children: [
+      //     {
+      //       title: 'menu_level_2a',
+      //       path: '#/dashboard/menu_level/menu_level_2a',
+      //     },
+      //     {
+      //       title: 'menu_level_2b',
+      //       path: '#/dashboard/menu_level/menu_level_2b',
+      //       children: [
+      //         {
+      //           title: 'menu_level_3a',
+      //           path: '#/dashboard/menu_level/menu_level_2b/menu_level_3a',
+      //         },
+      //         {
+      //           title: 'menu_level_3b',
+      //           path: '#/dashboard/menu_level/menu_level_2b/menu_level_3b',
+      //           children: [
+      //             {
+      //               title: 'menu_level_4a',
+      //               path: '#/dashboard/menu_level/menu_level_2b/menu_level_3b/menu_level_4a',
+      //             },
+      //             {
+      //               title: 'menu_level_4b',
+      //               path: '#/dashboard/menu_level/menu_level_2b/menu_level_3b/menu_level_4b',
+      //             },
+      //           ],
+      //         },
+      //       ],
+      //     },
+      //   ],
+      // },
+      // {
+      //   title: 'item_disabled',
+      //   path: '#disabled',
+      //   icon: ICONS.disabled,
+      //   disabled: true,
+      // },
 
-      {
-        title: 'item_label',
-        path: '#label',
-        icon: ICONS.label,
-        info: (
-          <Label color="info" startIcon={<Iconify icon="eva:email-fill" />}>
-            NEW
-          </Label>
-        ),
-      },
-      {
-        title: 'item_caption',
-        path: '#caption',
-        icon: ICONS.menuItem,
-        caption:
-          'Quisque malesuada placerat nisl. In hac habitasse platea dictumst. Cras id dui. Pellentesque commodo eros a enim. Morbi mollis tellus ac sapien.',
-      },
-      {
-        title: 'item_external_link',
-        path: 'https://www.google.com/',
-        icon: ICONS.external,
-      },
-      {
-        title: 'blank',
-        path: PATH_DASHBOARD.blank,
-        icon: ICONS.blank,
-      },
+      // {
+      //   title: 'item_label',
+      //   path: '#label',
+      //   icon: ICONS.label,
+      //   info: (
+      //     <Label color="info" startIcon={<Iconify icon="eva:email-fill" />}>
+      //       NEW
+      //     </Label>
+      //   ),
+      // },
+      // {
+      //   title: 'item_caption',
+      //   path: '#caption',
+      //   icon: ICONS.menuItem,
+      //   caption:
+      //     'Quisque malesuada placerat nisl. In hac habitasse platea dictumst. Cras id dui. Pellentesque commodo eros a enim. Morbi mollis tellus ac sapien.',
+      // },
+      // {
+      //   title: 'blank',
+      //   path: PATH_DASHBOARD.blank,
+      //   icon: ICONS.blank,
+      // },
     ],
   },
 ];

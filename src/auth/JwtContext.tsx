@@ -142,9 +142,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     //   password,
     // });
     // const { accessToken, user } = response.data;
-
     // setSession(accessToken);
-
     // dispatch({
     //   type: Types.LOGIN,
     //   payload: {

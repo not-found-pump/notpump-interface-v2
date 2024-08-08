@@ -69,7 +69,7 @@ type Props = {
 };
 
 export default function BlogPostHero({ post }: Props) {
-  const { cover, title, author, createdAt } = post;
+  const { coverUrl, title, author, createdAt } = post;
 
   const isDesktop = useResponsive('up', 'sm');
 
@@ -121,7 +121,7 @@ export default function BlogPostHero({ post }: Props) {
 
       <StyledOverlay />
 
-      <Image alt="cover" src={cover} ratio="16/9" />
+      <Image alt="cover" src={coverUrl} ratio="16/9" />
     </Box>
   );
 }
