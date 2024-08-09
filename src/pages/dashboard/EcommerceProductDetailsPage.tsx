@@ -21,7 +21,7 @@ import { SkeletonProductDetails } from '../../components/skeleton';
 import {
   ProductDetailsSummary,
   ProductDetailsReview,
-  ProductDetailsCarousel,
+  DN404DetailsCarousel,
 } from '../../sections/@dashboard/e-commerce/details';
 import CartWidget from '../../sections/@dashboard/e-commerce/CartWidget';
 
@@ -114,7 +114,8 @@ export default function EcommerceProductDetailsPage() {
           <>
             <Grid container spacing={3}>
               <Grid item xs={12} md={6} lg={7}>
-                <ProductDetailsCarousel product={product} />
+                <DN404DetailsCarousel product={product} />
+                
               </Grid>
 
               <Grid item xs={12} md={6} lg={5}>

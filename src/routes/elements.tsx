@@ -37,8 +37,8 @@ export const GeneralBookingPage = Loadable(
 export const GeneralFilePage = Loadable(lazy(() => import('../pages/dashboard/GeneralFilePage')));
 
 // DASHBOARD: ECOMMERCE
-export const EcommerceShopPage = Loadable(
-  lazy(() => import('../pages/dashboard/EcommerceShopPage'))
+export const DN404Fairlaunch = Loadable(
+  lazy(() => import('../pages/dashboard/DN404Fairlaunch'))
 );
 export const EcommerceProductDetailsPage = Loadable(
   lazy(() => import('../pages/dashboard/EcommerceProductDetailsPage'))

@@ -22,7 +22,7 @@ import {
   AppNewInvoice,
   AppTopAuthors,
   AppTopRelated,
-  AppAreaInstalled,
+  DN404LineChart,
   AppWidgetSummary,
   AppCurrentDownload,
   AppTopInstalledCountries,
@@ -125,7 +125,7 @@ export default function GeneralAppPage() {
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
-            <AppAreaInstalled
+            <DN404LineChart
               title="Area Installed"
               subheader="(+43%) than last year"
               chart={{

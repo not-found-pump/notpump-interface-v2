@@ -86,7 +86,7 @@ const navConfig = [
       { title: 'Create', icon: ICONS.booking, path: PATH_DASHBOARD.blog.new },
       {
         title: 'Docs',
-        path: 'https://www.google.com/',
+        path: 'https://www.notion.so/Notpump-172f28f798ed4c66a4bae4b96c16d7a5?pvs=4',
         icon: ICONS.blank,
       },
 

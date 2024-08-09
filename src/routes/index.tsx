@@ -32,7 +32,7 @@ import {
   UserProfilePage,
   UserAccountPage,
   // Dashboard: Ecommerce
-  EcommerceShopPage,
+  DN404Fairlaunch,
   EcommerceCheckoutPage,
   EcommerceProductListPage,
   EcommerceProductEditPage,
@@ -185,7 +185,7 @@ export default function Router() {
           path: 'e-commerce',
           children: [
             { element: <Navigate to="/dashboard/e-commerce/shop" replace />, index: true },
-            { path: 'shop', element: <EcommerceShopPage /> },
+            { path: 'shop', element: <DN404Fairlaunch /> },
             { path: 'product/:name', element: <EcommerceProductDetailsPage /> },
             { path: 'list', element: <EcommerceProductListPage /> },
             { path: 'product/new', element: <EcommerceProductCreatePage /> },

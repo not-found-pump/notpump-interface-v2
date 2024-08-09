@@ -11,6 +11,7 @@ import Chart, { useChart } from '../../../../components/chart';
 interface Props extends CardProps {
   title?: string;
   subheader?: string;
+  height?:number;
   chart: {
     categories?: string[];
     colors?: string[];
@@ -25,7 +26,7 @@ interface Props extends CardProps {
   };
 }
 
-export default function AppAreaInstalled({ title, subheader, chart, ...other }: Props) {
+export default function DN404LineChart({ title, subheader, chart, height, ...other }: Props) {
   const { colors, categories, series, options } = chart;
 
   const [seriesData, setSeriesData] = useState('2019');
@@ -36,33 +37,17 @@ export default function AppAreaInstalled({ title, subheader, chart, ...other }: 
       categories,
     },
     ...options,
+    grid: {
+      show: false
+    }
   });
 
   return (
-    <Card {...other}>
-      <CardHeader
-        title={title}
-        subheader={subheader}
-        action={
-          <CustomSmallSelect
-            value={seriesData}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              setSeriesData(event.target.value)
-            }
-          >
-            {series.map((option) => (
-              <option key={option.year} value={option.year}>
-                {option.year}
-              </option>
-            ))}
-          </CustomSmallSelect>
-        }
-      />
-
+    <Card {...other} sx={{p: 1, height: height || 500}}>
       {series.map((item) => (
-        <Box key={item.year} sx={{ mt: 3, mx: 3 }} dir="ltr">
+        <Box key={item.year} sx={{p: 0, height: '100%'}} dir="ltr">
           {item.year === seriesData && (
-            <Chart type="line" series={item.data} options={chartOptions} height={364} />
+            <Chart type="line"  series={item.data} options={chartOptions} height="100%"/>
           )}
         </Box>
       ))}

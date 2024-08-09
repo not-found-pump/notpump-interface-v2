@@ -4,8 +4,12 @@ import orderBy from 'lodash/orderBy';
 // form
 import { useForm } from 'react-hook-form';
 // @mui
-import { Container, Typography, Stack } from '@mui/material';
+import { Container, Typography, Stack, Tooltip } from '@mui/material';
 // redux
+import {useLocales} from 'src/locales';
+import {DN404_DEFINE, NOTPUMP_DEFINE_FAIRLAUNCH} from 'src/descriptions/DN404';
+import {Box} from '@mui/system';
+import Iconify from 'src/components/iconify';
 import { useDispatch, useSelector } from '../../redux/store';
 import { getProducts } from '../../redux/slices/DN404';
 // routes
@@ -28,7 +32,7 @@ import CartWidget from '../../sections/@dashboard/e-commerce/CartWidget';
 
 // ----------------------------------------------------------------------
 
-export default function EcommerceShopPage() {
+export default function DN404Fairlaunch() {
   const { themeStretch } = useSettingsContext();
 
   const dispatch = useDispatch();
@@ -36,7 +40,7 @@ export default function EcommerceShopPage() {
   const { products, checkout } = useSelector((state) => state.product);
 
   const [openFilter, setOpenFilter] = useState(false);
-
+  const {translate} = useLocales()
   const defaultValues = {
     gender: [],
     category: 'All',
@@ -93,7 +97,16 @@ export default function EcommerceShopPage() {
       <FormProvider methods={methods}>
         <Container maxWidth={themeStretch ? false : 'lg'}>
           <Typography variant="h4" gutterBottom>
-            DN404 list
+          <Tooltip title={`${translate(NOTPUMP_DEFINE_FAIRLAUNCH)}`} arrow>
+          <Box component="span">
+             DN404 lists
+            <Iconify icon="eva:info-outline" ml={1} color="gray" width={16} />
+          </Box>
+        </Tooltip>
+          </Typography>
+
+          <Typography color="GrayText" gutterBottom>
+             {`${translate(DN404_DEFINE)}`}
           </Typography>
 
           <Stack

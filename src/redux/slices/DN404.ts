@@ -5,7 +5,7 @@ import { createSlice, Dispatch } from '@reduxjs/toolkit';
 // utils
 import axios from '../../utils/axios';
 import { IDN404MetaDataState, ICheckoutCartItem } from '../../@types/DN404';
-
+import DN404Inprogress from "../../DN404.list.json"
 // ----------------------------------------------------------------------
 
 const initialState: IDN404MetaDataState = {

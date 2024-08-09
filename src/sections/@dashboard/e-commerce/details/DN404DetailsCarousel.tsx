@@ -1,15 +1,18 @@
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 // @mui
-import { alpha, useTheme, styled } from '@mui/material/styles';
-import { Box } from '@mui/material';
+import { Box, Card, Divider, Tab, Tabs, Typography } from '@mui/material';
+import { alpha, styled, useTheme } from '@mui/material/styles';
 // utils
+import useResponsive from 'src/hooks/useResponsive';
 import { bgGradient } from '../../../../utils/cssStyles';
 // @types
 import { IDN404MetaData } from '../../../../@types/DN404';
 // components
+import Carousel, { CarouselArrowIndex } from '../../../../components/carousel';
 import Image from '../../../../components/image';
 import Lightbox from '../../../../components/lightbox';
-import Carousel, { CarouselArrowIndex } from '../../../../components/carousel';
+import { DN404LineChart } from '../../general/app';
+import DN404CandleChart from '../../general/app/DN404CandleChart';
 
 // ----------------------------------------------------------------------
 
@@ -74,8 +77,9 @@ type Props = {
   product: IDN404MetaData;
 };
 
-export default function ProductDetailsCarousel({ product }: Props) {
+export default function DN404DetailsCarousel({ product }: Props) {
   const theme = useTheme();
+  const isDesktop = useResponsive('up', 'md');
 
   const carousel1 = useRef<Carousel | null>(null);
 
@@ -88,6 +92,8 @@ export default function ProductDetailsCarousel({ product }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [selectedImage, setSelectedImage] = useState<number>(-1);
+
+  const [currentTabTrade, setCurrentTabTrade] = useState<'line' | 'candle'>('line');
 
   const imagesLightbox = product.images.map((img) => ({ src: img }));
 
@@ -142,6 +148,44 @@ export default function ProductDetailsCarousel({ product }: Props) {
     carousel2.current?.slickNext();
   };
 
+  const candleChart = (
+    <Card sx={{ p: 1, height: isDesktop ? 600 : 300 }}>
+      <DN404CandleChart />
+    </Card>
+  );
+  const lineChart = (
+    <DN404LineChart
+      height={isDesktop ? 600 : 300}
+      title="Line bonding curve chart"
+      chart={{
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+        series: [
+          {
+            year: '2019',
+            data: [
+              {
+                name: '$ (Market Cap)',
+                data: [4500, 7700, 9930, 8800, 7700, 5612, 1345, 3474, 10035],
+              },
+            ],
+          },
+        ],
+      }}
+    />
+  );
+  const TABS = [
+    {
+      value: 'line',
+      label: 'Curve Line',
+      component: lineChart,
+    },
+    {
+      value: 'candle',
+      label: `Candle`,
+      component: candleChart,
+    },
+  ];
+
   const renderLargeImg = (
     <Box sx={{ mb: 3, borderRadius: 2, overflow: 'hidden', position: 'relative' }}>
       <Carousel {...carouselSettings1} asNavFor={nav2} ref={carousel1}>
@@ -175,6 +219,7 @@ export default function ProductDetailsCarousel({ product }: Props) {
             disabledEffect
             alt="thumbnail"
             src={img}
+            onClick={() => handleOpenLightbox(img)}
             sx={{
               width: THUMB_SIZE,
               height: THUMB_SIZE,
@@ -199,7 +244,38 @@ export default function ProductDetailsCarousel({ product }: Props) {
           },
         }}
       >
-        {renderLargeImg}
+        <Card>
+          <Tabs
+            value={currentTabTrade}
+            onChange={(event, value) => {
+              setCurrentTabTrade(value);
+            }}
+            sx={{ px: 3, bgcolor: 'background.neutral' }}
+          >
+            {TABS.map((tab) => (
+              <Tab key={tab.value} value={tab.value} label={tab.label} />
+            ))}
+          </Tabs>
+
+          <Divider />
+
+          {TABS.map(
+            (tab) =>
+              tab.value === currentTabTrade && (
+                <Box
+                  key={tab.value}
+                  sx={
+                    {
+                      // ...(currentTabTrade === 'line' &),
+                    }
+                  }
+                >
+                  {tab?.component}
+                </Box>
+              )
+          )}
+        </Card>
+        {/* {renderLargeImg} */}
 
         {renderThumbnails}
       </Box>

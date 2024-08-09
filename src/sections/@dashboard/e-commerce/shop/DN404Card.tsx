@@ -18,6 +18,7 @@ import { formatAddress } from 'src/utils/formatAddress';
 import ProgressLinear from 'src/sections/_examples/mui/progress/ProgressLinear';
 import { color } from '@mui/system';
 import { useLocales } from 'src/locales';
+import {NOTPUMP_DEFINE_FAIRLAUNCH} from 'src/descriptions/DN404';
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // utils
 import { fCurrency, fShortenNumber } from '../../../../utils/formatNumber';
@@ -142,7 +143,7 @@ export default function DN404Card({ product }: Props) {
             flexGrow: 1,
           }}
         />
-         <Tooltip title={`${translate('abc')}`} arrow>
+         <Tooltip title={`${translate(NOTPUMP_DEFINE_FAIRLAUNCH)}`} arrow>
           <Box component="span">
             <Iconify icon="eva:info-outline" color="gray" width={16} />
           </Box>
