@@ -91,7 +91,7 @@ export default function DN404DetailsCarousel({ product }: Props) {
 
   const [selectedImage, setSelectedImage] = useState<number>(-1);
 
-  const [currentTabTrade, setCurrentTabTrade] = useState<'line' | 'candle'>('line');
+  const [currentTabTrade, setCurrentTabTrade] = useState<'line' | 'candle'>('candle');
 
   const imagesLightbox = product.images.map((img) => ({ src: img }));
 

@@ -40,8 +40,8 @@ export const GeneralFilePage = Loadable(lazy(() => import('../pages/dashboard/Ge
 export const DN404Fairlaunch = Loadable(
   lazy(() => import('../pages/dashboard/DN404Fairlaunch'))
 );
-export const EcommerceProductDetailsPage = Loadable(
-  lazy(() => import('../pages/dashboard/EcommerceProductDetailsPage'))
+export const DN404DetailsPage = Loadable(
+  lazy(() => import('../pages/dashboard/DN404DetailsPage'))
 );
 export const EcommerceProductListPage = Loadable(
   lazy(() => import('../pages/dashboard/EcommerceProductListPage'))
@@ -57,7 +57,7 @@ export const EcommerceCheckoutPage = Loadable(
 );
 
 // DASHBOARD: INVOICE
-export const InvoiceListPage = Loadable(lazy(() => import('../pages/dashboard/InvoiceListPage')));
+export const DN404TradeHistory = Loadable(lazy(() => import('../pages/dashboard/DN404TradeHistory')));
 export const InvoiceDetailsPage = Loadable(
   lazy(() => import('../pages/dashboard/InvoiceDetailsPage'))
 );

@@ -37,9 +37,9 @@ import {
   EcommerceProductListPage,
   EcommerceProductEditPage,
   EcommerceProductCreatePage,
-  EcommerceProductDetailsPage,
+  DN404DetailsPage,
   // Dashboard: Invoice
-  InvoiceListPage,
+  DN404TradeHistory,
   InvoiceDetailsPage,
   InvoiceCreatePage,
   InvoiceEditPage,
@@ -186,7 +186,7 @@ export default function Router() {
           children: [
             { element: <Navigate to="/dashboard/e-commerce/shop" replace />, index: true },
             { path: 'shop', element: <DN404Fairlaunch /> },
-            { path: 'product/:name', element: <EcommerceProductDetailsPage /> },
+            { path: 'product/:name', element: <DN404DetailsPage /> },
             { path: 'list', element: <EcommerceProductListPage /> },
             { path: 'product/new', element: <EcommerceProductCreatePage /> },
             { path: 'product/:name/edit', element: <EcommerceProductEditPage /> },
@@ -209,7 +209,7 @@ export default function Router() {
           path: 'invoice',
           children: [
             { element: <Navigate to="/dashboard/invoice/list" replace />, index: true },
-            { path: 'list', element: <InvoiceListPage /> },
+            { path: 'list', element: <DN404TradeHistory /> },
             { path: ':id', element: <InvoiceDetailsPage /> },
             { path: ':id/edit', element: <InvoiceEditPage /> },
             { path: 'new', element: <InvoiceCreatePage /> },

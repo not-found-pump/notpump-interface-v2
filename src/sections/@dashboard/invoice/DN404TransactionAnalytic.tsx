@@ -17,7 +17,7 @@ type Props = {
   color?: string;
 };
 
-export default function InvoiceAnalytic({ title, total, icon, color, percent, price }: Props) {
+export default function DN404TransactionAnalytic({ title, total, icon, color, percent, price }: Props) {
   return (
     <Stack
       direction="row"
@@ -56,7 +56,7 @@ export default function InvoiceAnalytic({ title, total, icon, color, percent, pr
         <Typography variant="subtitle2">
           {fShortenNumber(total)}{' '}
           <Box component="span" sx={{ color: 'text.secondary', typography: 'body2' }}>
-            invoices
+            Transtions
           </Box>
         </Typography>
 

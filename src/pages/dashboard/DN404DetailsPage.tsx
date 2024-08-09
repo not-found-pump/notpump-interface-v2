@@ -1,30 +1,30 @@
-import { Helmet } from 'react-helmet-async';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import {useEffect,useState} from 'react';
+import {Helmet} from 'react-helmet-async';
+import {useParams} from 'react-router-dom';
 // @mui
-import { alpha } from '@mui/material/styles';
-import { Box, Tab, Tabs, Card, Grid, Divider, Container, Typography, Stack } from '@mui/material';
+import {Box,Card,Container,Divider,Grid,Stack,Tab,Tabs,Typography} from '@mui/material';
+import {alpha} from '@mui/material/styles';
 // redux
-import {DN404_DEFINE, NOTPUMP_DEFINE_FAIRLAUNCH, NOTPUMP_DN404} from 'src/descriptions/DN404';
-import { useDispatch, useSelector } from '../../redux/store';
-import { getProduct, addToCart, gotoStep } from '../../redux/slices/DN404';
+import {NOTPUMP_DN404} from 'src/descriptions/DN404';
+import {addToCart,getProduct,gotoStep} from '../../redux/slices/DN404';
+import {useDispatch,useSelector} from '../../redux/store';
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
 // @types
-import { ICheckoutCartItem } from '../../@types/DN404';
+import {ICheckoutCartItem} from '../../@types/DN404';
 // components
+import CustomBreadcrumbs from '../../components/custom-breadcrumbs';
 import Iconify from '../../components/iconify';
 import Markdown from '../../components/markdown';
-import CustomBreadcrumbs from '../../components/custom-breadcrumbs';
-import { useSettingsContext } from '../../components/settings';
-import { SkeletonProductDetails } from '../../components/skeleton';
+import {useSettingsContext} from '../../components/settings';
+import {SkeletonProductDetails} from '../../components/skeleton';
 // sections
-import {
-  ProductDetailsSummary,
-  ProductDetailsReview,
-  DN404DetailsCarousel,
-} from '../../sections/@dashboard/e-commerce/details';
 import CartWidget from '../../sections/@dashboard/e-commerce/CartWidget';
+import {
+  DN404DetailsCarousel,
+  DN404DetailsSummary,
+  ProductDetailsReview,
+} from '../../sections/@dashboard/e-commerce/details';
+import DN404TradeHistory from './DN404TradeHistory';
 
 // ----------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ const SUMMARY = [
 
 // ----------------------------------------------------------------------
 
-export default function EcommerceProductDetailsPage() {
+export default function DN404DetailsPage() {
   const { themeStretch } = useSettingsContext();
 
   const { name } = useParams();
@@ -57,7 +57,7 @@ export default function EcommerceProductDetailsPage() {
 
   const { product, isLoading, checkout } = useSelector((state) => state.product);
 
-  const [currentTab, setCurrentTab] = useState('description');
+  const [currentTab, setCurrentTab] = useState('trade_history');
 
   useEffect(() => {
     if (name) {
@@ -75,15 +75,16 @@ export default function EcommerceProductDetailsPage() {
 
   const TABS = [
     {
+      value: 'trade_history',
+      label: `Trade history`,
+      component: product ? <DN404TradeHistory /> : null,
+    },
+    {
       value: 'description',
       label: 'description',
       component: product ? <Markdown children={product?.description} /> : null,
     },
-    {
-      value: 'reviews',
-      label: `Reviews (${product ? product.reviews.length : ''})`,
-      component: product ? <ProductDetailsReview product={product} /> : null,
-    },
+ 
   ];
 
   return (
@@ -113,7 +114,7 @@ export default function EcommerceProductDetailsPage() {
               </Grid>
 
               <Grid item xs={12} md={6} lg={5}>
-                <ProductDetailsSummary
+                <DN404DetailsSummary
                   product={product}
                   cart={checkout.cart}
                   onAddCart={handleAddCart}
@@ -129,9 +130,9 @@ export default function EcommerceProductDetailsPage() {
                 xs: 'repeat(1, 1fr)',
                 md: 'repeat(3, 1fr)',
               }}
-              sx={{ my: 10 }}
+              sx={{ my: 2 }}
             >
-              {SUMMARY.map((item) => (
+              {/* {SUMMARY.map((item) => (
                 <Box key={item.title} sx={{ textAlign: 'center' }}>
                   <Stack
                     alignItems="center"
@@ -154,7 +155,7 @@ export default function EcommerceProductDetailsPage() {
 
                   <Typography sx={{ color: 'text.secondary' }}>{item.description}</Typography>
                 </Box>
-              ))}
+              ))} */}
             </Box>
 
             <Card>

@@ -44,7 +44,7 @@ import {
   TablePaginationCustom,
 } from '../../components/table';
 // sections
-import InvoiceAnalytic from '../../sections/@dashboard/invoice/InvoiceAnalytic';
+import DN404TransactionAnalytic from '../../sections/@dashboard/invoice/DN404TransactionAnalytic';
 import { InvoiceTableRow, InvoiceTableToolbar } from '../../sections/@dashboard/invoice/list';
 
 // ----------------------------------------------------------------------
@@ -70,7 +70,7 @@ const TABLE_HEAD = [
 
 // ----------------------------------------------------------------------
 
-export default function InvoiceListPage() {
+export default function DN404TradeHistory() {
   const theme = useTheme();
 
   const { themeStretch } = useSettingsContext();
@@ -228,37 +228,10 @@ export default function InvoiceListPage() {
   return (
     <>
       <Helmet>
-        <title> Invoice: List | NotPump</title>
+        <title>Token history | NotPump</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>
-        <CustomBreadcrumbs
-          heading="Invoice List"
-          links={[
-            {
-              name: 'Dashboard',
-              href: PATH_DASHBOARD.root,
-            },
-            {
-              name: 'Invoices',
-              href: PATH_DASHBOARD.invoice.root,
-            },
-            {
-              name: 'List',
-            },
-          ]}
-          action={
-            <Button
-              component={RouterLink}
-              to={PATH_DASHBOARD.invoice.new}
-              variant="contained"
-              startIcon={<Iconify icon="eva:plus-fill" />}
-            >
-              New Invoice
-            </Button>
-          }
-        />
-
         <Card sx={{ mb: 5 }}>
           <Scrollbar>
             <Stack
@@ -266,8 +239,8 @@ export default function InvoiceListPage() {
               divider={<Divider orientation="vertical" flexItem sx={{ borderStyle: 'dashed' }} />}
               sx={{ py: 2 }}
             >
-              <InvoiceAnalytic
-                title="Total"
+              <DN404TransactionAnalytic
+                title="Transactions"
                 total={tableData.length}
                 percent={100}
                 price={sumBy(tableData, 'totalPrice')}
@@ -275,8 +248,8 @@ export default function InvoiceListPage() {
                 color={theme.palette.info.main}
               />
 
-              <InvoiceAnalytic
-                title="Paid"
+              <DN404TransactionAnalytic
+                title="Buy"
                 total={getLengthByStatus('paid')}
                 percent={getPercentByStatus('paid')}
                 price={getTotalPriceByStatus('paid')}
@@ -284,17 +257,8 @@ export default function InvoiceListPage() {
                 color={theme.palette.success.main}
               />
 
-              <InvoiceAnalytic
-                title="Unpaid"
-                total={getLengthByStatus('unpaid')}
-                percent={getPercentByStatus('unpaid')}
-                price={getTotalPriceByStatus('unpaid')}
-                icon="eva:clock-fill"
-                color={theme.palette.warning.main}
-              />
-
-              <InvoiceAnalytic
-                title="Overdue"
+              <DN404TransactionAnalytic
+                title="Sell"
                 total={getLengthByStatus('overdue')}
                 percent={getPercentByStatus('overdue')}
                 price={getTotalPriceByStatus('overdue')}
@@ -302,8 +266,8 @@ export default function InvoiceListPage() {
                 color={theme.palette.error.main}
               />
 
-              <InvoiceAnalytic
-                title="Draft"
+              <DN404TransactionAnalytic
+                title="Dev"
                 total={getLengthByStatus('draft')}
                 percent={getPercentByStatus('draft')}
                 price={getTotalPriceByStatus('draft')}

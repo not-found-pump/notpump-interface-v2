@@ -4,7 +4,15 @@ import { useNavigate } from 'react-router-dom';
 // form
 import { Controller, useForm } from 'react-hook-form';
 // @mui
-import { Button, Divider, IconButton, InputAdornment, LinearProgress, Stack, Typography } from '@mui/material';
+import {
+  Button,
+  Divider,
+  IconButton,
+  InputAdornment,
+  LinearProgress,
+  Stack,
+  Typography,
+} from '@mui/material';
 // routes
 import { alpha, styled, useTheme } from '@mui/material/styles';
 import Lightbox from 'src/components/lightbox';
@@ -96,7 +104,7 @@ type Props = {
   onGotoStep: (step: number) => void;
 };
 
-export default function ProductDetailsSummary({
+export default function DN404DetailsSummary({
   cart,
   product,
   onAddCart,
@@ -327,87 +335,91 @@ export default function ProductDetailsSummary({
         </Stack>
 
         <Divider sx={{ borderStyle: 'dashed' }} />
+        <Stack spacing={0.5}>
+          <Stack direction="row" alignItems="center" justifyContent="space-between">
+            <Typography variant="subtitle2">
+              {product.name.split(' ')[0].toUpperCase()} / ETH
+            </Typography>
+            <LinearProgress
+              variant="determinate"
+              value={Number(Math.random().toFixed(2)) * 100}
+              sx={{
+                mx: 2,
+                flexGrow: 1,
+                mr: 0.5,
+              }}
+            />
+          </Stack>
 
-        <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <Typography variant="subtitle2">
-            {product.name.split(' ')[0].toUpperCase()} / ETH
-          </Typography>
-          <LinearProgress
-          variant="determinate"
-          value={Number(Math.random().toFixed(2)) * 100}
-          sx={{
-            mx: 2,
-            flexGrow: 1,
-            mr: 0.5,
-          }}
-        />
+          <Stack spacing={1}>
+            <Typography
+              variant="caption"
+              component="div"
+              sx={{ textAlign: 'right', color: 'text.secondary', cursor: 'pointer' }}
+            >
+              ETH Balance: 1,23
+            </Typography>
+            <RHFTextField
+              size="small"
+              type="number"
+              name={`items[${0}].price`}
+              value={0.001}
+              label="WETH amount"
+              placeholder="0"
+              onChange={(event) => {}}
+              InputProps={{
+                startAdornment: <InputAdornment position="start">-</InputAdornment>,
+              }}
+              sx={{ width: '100%' }}
+            />
+          </Stack>
+          <Stack spacing={1} sx={{pt: 1}}>
+            <div style={{width:"100%", textAlign:'center'}}>
+              <IconButton sx={{height: 40, width: 40}}>⇅</IconButton> 
+            </div>
+          </Stack>
+          <Stack spacing={1}>
+            <Typography
+              variant="caption"
+              component="div"
+              sx={{ textAlign: 'right', color: 'text.secondary', cursor: 'pointer' }}
+            >
+              {product.name.split(' ')[0].toUpperCase()} Balance: 15k
+            </Typography>
+            <RHFTextField
+              size="small"
+              type="number"
+              name={`items[${0}].price`}
+              value={12050}
+              label={`${product.name.split(' ')[0].toUpperCase()} amount`}
+              placeholder="0"
+              onChange={(event) => {}}
+              InputProps={{
+                startAdornment: <InputAdornment position="start">+</InputAdornment>,
+              }}
+              sx={{ width: '100%' }}
+            />
+          </Stack>
+
         </Stack>
-
-        <Stack spacing={1}>
-          <Typography
-            variant="caption"
-            component="div"
-            sx={{ textAlign: 'right', color: 'text.secondary', cursor:'pointer' }}
-          >
-            ETH Balance: 1,23
-          </Typography>
-          <RHFTextField
-            size="small"
-            type="number"
-            name={`items[${0}].price`}
-            value={0.001}
-            label="WETH amount"
-            placeholder="0"
-            onChange={(event) => {}}
-            InputProps={{
-              startAdornment: <InputAdornment position="start">▷</InputAdornment>,
-            }}
-            sx={{ width: '100%' }}
-          />
-        </Stack>
-
-        <Stack spacing={1}>
-          <Typography
-            variant="caption"
-            component="div"
-            sx={{ textAlign: 'right', color: 'text.secondary',  cursor:'pointer'}}
-          >
-            {product.name.split(' ')[0].toUpperCase()} Balance: 15k
-          </Typography>
-          <RHFTextField
-            size="small"
-            type="number"
-            name={`items[${0}].price`}
-            value={12050}
-            label={`${product.name.split(' ')[0].toUpperCase()} amount`}
-            placeholder="0"
-            onChange={(event) => {}}
-            InputProps={{
-              startAdornment: <InputAdornment position="start">▷</InputAdornment>,
-            }}
-            sx={{ width: '100%' }}
-          />
-        </Stack>
-
-        <Divider sx={{ borderStyle: 'dashed' }} />
-
         <Stack direction="row" spacing={2}>
-          <Button
-            fullWidth
-            disabled={isMaxQuantity}
-            size="large"
-            color="success"
-            variant="contained"
-            onClick={handleAddCart}
-            sx={{ whiteSpace: 'nowrap' }}
-          >
-            Buy
-          </Button>
+            <Button
+              fullWidth
+              disabled={isMaxQuantity}
+              size="large"
+              color="success"
+              variant="contained"
+              onClick={handleAddCart}
+              sx={{ whiteSpace: 'nowrap' }}
+            >
+              Buy
+            </Button>
 
-          <Button fullWidth color="error" size="large" type="submit" variant="contained">
-            Sell
-          </Button>
-        </Stack>
+            <Button fullWidth color="error" size="large" type="submit" variant="contained">
+              Sell
+            </Button>
+          </Stack>
+        <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Stack direction="row" alignItems="center" justifyContent="center">
           {_socials.map((social) => (
