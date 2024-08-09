@@ -1,75 +1,73 @@
-import { useEffect, useRef, useState } from 'react';
+import {useEffect,useRef,useState} from 'react';
 // @mui
-import { Box, Card, Divider, Tab, Tabs, Typography } from '@mui/material';
-import { alpha, styled, useTheme } from '@mui/material/styles';
+import {Box,Card,Divider,Tab,Tabs} from '@mui/material';
+import {useTheme} from '@mui/material/styles';
 // utils
 import useResponsive from 'src/hooks/useResponsive';
-import { bgGradient } from '../../../../utils/cssStyles';
 // @types
-import { IDN404MetaData } from '../../../../@types/DN404';
+import {IDN404MetaData} from '../../../../@types/DN404';
 // components
-import Carousel, { CarouselArrowIndex } from '../../../../components/carousel';
-import Image from '../../../../components/image';
+import Carousel from '../../../../components/carousel';
 import Lightbox from '../../../../components/lightbox';
-import { DN404LineChart } from '../../general/app';
+import {DN404LineChart} from '../../general/app';
 import DN404CandleChart from '../../general/app/DN404CandleChart';
 
 // ----------------------------------------------------------------------
 
 const THUMB_SIZE = 64;
 
-type StyledThumbnailsContainerProps = {
-  length: number;
-};
+// type StyledThumbnailsContainerProps = {
+//   length: number;
+// };
 
-const StyledThumbnailsContainer = styled('div', {
-  shouldForwardProp: (prop) => prop !== 'length',
-})<StyledThumbnailsContainerProps>(({ length, theme }) => ({
-  margin: theme.spacing(0, 'auto'),
-  position: 'relative',
+// const StyledThumbnailsContainer = styled('div', {
+//   shouldForwardProp: (prop) => prop !== 'length',
+// })<StyledThumbnailsContainerProps>(({ length, theme }) => ({
+//   margin: theme.spacing(0, 'auto'),
+//   position: 'relative',
 
-  '& .slick-slide': {
-    opacity: 0.48,
-    '&.slick-current': {
-      opacity: 1,
-    },
-    '& > div': {
-      padding: theme.spacing(0, 0.75),
-    },
-  },
+//   '& .slick-slide': {
+//     opacity: 0.48,
+//     '&.slick-current': {
+//       opacity: 1,
+//     },
+//     '& > div': {
+//       padding: theme.spacing(0, 0.75),
+//     },
+//   },
 
-  ...(length === 1 && {
-    maxWidth: THUMB_SIZE * 1 + 16,
-  }),
-  ...(length === 2 && {
-    maxWidth: THUMB_SIZE * 2 + 32,
-  }),
-  ...((length === 3 || length === 4) && {
-    maxWidth: THUMB_SIZE * 3 + 48,
-  }),
-  ...(length >= 5 && {
-    maxWidth: THUMB_SIZE * 6,
-  }),
-  ...(length > 2 && {
-    '&:before, &:after': {
-      ...bgGradient({
-        direction: 'to left',
-        startColor: `${alpha(theme.palette.background.default, 0)} 0%`,
-        endColor: `${theme.palette.background.default} 100%`,
-      }),
-      top: 0,
-      zIndex: 9,
-      content: "''",
-      height: '100%',
-      position: 'absolute',
-      width: (THUMB_SIZE * 2) / 3,
-    },
-    '&:after': {
-      right: 0,
-      transform: 'scaleX(-1)',
-    },
-  }),
-}));
+//   ...(length === 1 && {
+//     maxWidth: THUMB_SIZE * 1 + 16,
+//   }),
+//   ...(length === 2 && {
+//     maxWidth: THUMB_SIZE * 2 + 32,
+//   }),
+//   ...((length === 3 || length === 4) && {
+//     maxWidth: THUMB_SIZE * 3 + 48,
+//   }),
+//   ...(length >= 5 && {
+//     maxWidth: THUMB_SIZE * 6,
+//   }),
+//   ...(length > 2 && {
+//     '&:before, &:after': {
+//       ...bgGradient({
+//         direction: 'to left',
+//         startColor: `${alpha(theme.palette.background.default, 0)} 0%`,
+//         endColor: `${theme.palette.background.default} 100%`,
+//       }),
+//       top: 0,
+//       zIndex: 9,
+//       content: "''",
+//       height: '100%',
+//       position: 'absolute',
+//       width: (THUMB_SIZE * 2) / 3,
+//     },
+//     '&:after': {
+//       right: 0,
+//       transform: 'scaleX(-1)',
+//     },
+//   }),
+// }));
 
 // ----------------------------------------------------------------------
 
@@ -186,54 +184,54 @@ export default function DN404DetailsCarousel({ product }: Props) {
     },
   ];
 
-  const renderLargeImg = (
-    <Box sx={{ mb: 3, borderRadius: 2, overflow: 'hidden', position: 'relative' }}>
-      <Carousel {...carouselSettings1} asNavFor={nav2} ref={carousel1}>
-        {product.images.map((img) => (
-          <Image
-            key={img}
-            alt="product"
-            src={img}
-            ratio="1/1"
-            onClick={() => handleOpenLightbox(img)}
-            sx={{ cursor: 'zoom-in' }}
-          />
-        ))}
-      </Carousel>
+  // const renderLargeImg = (
+  //   <Box sx={{ mb: 3, borderRadius: 2, overflow: 'hidden', position: 'relative' }}>
+  //     <Carousel {...carouselSettings1} asNavFor={nav2} ref={carousel1}>
+  //       {product.images.map((img) => (
+  //         <Image
+  //           key={img}
+  //           alt="product"
+  //           src={img}
+  //           ratio="1/1"
+  //           onClick={() => handleOpenLightbox(img)}
+  //           sx={{ cursor: 'zoom-in' }}
+  //         />
+  //       ))}
+  //     </Carousel>
 
-      <CarouselArrowIndex
-        index={currentIndex}
-        total={product.images.length}
-        onNext={handleNext}
-        onPrevious={handlePrev}
-      />
-    </Box>
-  );
+  //     <CarouselArrowIndex
+  //       index={currentIndex}
+  //       total={product.images.length}
+  //       onNext={handleNext}
+  //       onPrevious={handlePrev}
+  //     />
+  //   </Box>
+  // );
 
-  const renderThumbnails = (
-    <StyledThumbnailsContainer length={product.images.length}>
-      <Carousel {...carouselSettings2} asNavFor={nav1} ref={carousel2}>
-        {product.images.map((img, index) => (
-          <Image
-            key={img}
-            disabledEffect
-            alt="thumbnail"
-            src={img}
-            onClick={() => handleOpenLightbox(img)}
-            sx={{
-              width: THUMB_SIZE,
-              height: THUMB_SIZE,
-              borderRadius: 1.5,
-              cursor: 'pointer',
-              ...(currentIndex === index && {
-                border: `solid 2px ${theme.palette.primary.main}`,
-              }),
-            }}
-          />
-        ))}
-      </Carousel>
-    </StyledThumbnailsContainer>
-  );
+  // const renderThumbnails = (
+  //   <StyledThumbnailsContainer length={product.images.length} sx={{pt:3}}>
+  //     <Carousel {...carouselSettings2} asNavFor={nav1} ref={carousel2}>
+  //       {product.images.map((img, index) => (
+  //         <Image
+  //           key={img}
+  //           disabledEffect
+  //           alt="thumbnail"
+  //           src={img}
+  //           onClick={() => handleOpenLightbox(img)}
+  //           sx={{
+  //             width: THUMB_SIZE,
+  //             height: THUMB_SIZE,
+  //             borderRadius: 1.5,
+  //             cursor: 'pointer',
+  //             ...(currentIndex === index && {
+  //               border: `solid 2px ${theme.palette.primary.main}`,
+  //             }),
+  //           }}
+  //         />
+  //       ))}
+  //     </Carousel>
+  //   </StyledThumbnailsContainer>
+  // );
 
   return (
     <>
@@ -277,7 +275,7 @@ export default function DN404DetailsCarousel({ product }: Props) {
         </Card>
         {/* {renderLargeImg} */}
 
-        {renderThumbnails}
+        {/* {renderThumbnails} */}
       </Box>
 
       <Lightbox

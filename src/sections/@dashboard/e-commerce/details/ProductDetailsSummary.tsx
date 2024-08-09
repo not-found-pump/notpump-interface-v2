@@ -1,35 +1,88 @@
-import { useEffect } from 'react';
 import { sentenceCase } from 'change-case';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // form
 import { Controller, useForm } from 'react-hook-form';
 // @mui
-import {
-  Box,
-  Link,
-  Stack,
-  Button,
-  Rating,
-  Divider,
-  MenuItem,
-  Typography,
-  IconButton,
-} from '@mui/material';
+import { Button, Divider, IconButton, InputAdornment, LinearProgress, Stack, Typography } from '@mui/material';
 // routes
+import { alpha, styled, useTheme } from '@mui/material/styles';
+import Lightbox from 'src/components/lightbox';
+import { NOTPUMP_DEFINE_FAIRLAUNCH } from 'src/descriptions/DN404';
+import useResponsive from 'src/hooks/useResponsive';
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // utils
-import { fShortenNumber, fCurrency } from '../../../../utils/formatNumber';
 // @types
-import { IDN404MetaData, ICheckoutCartItem } from '../../../../@types/DN404';
+import { ICheckoutCartItem, IDN404MetaData } from '../../../../@types/DN404';
 // _mock
 import { _socials } from '../../../../_mock/arrays';
 // components
-import Label from '../../../../components/label';
-import Iconify from '../../../../components/iconify';
-import { IncrementerButton } from '../../../../components/custom-input';
 import { ColorSinglePicker } from '../../../../components/color-utils';
-import FormProvider, { RHFSelect } from '../../../../components/hook-form';
+import FormProvider, { RHFTextField } from '../../../../components/hook-form';
+import Iconify from '../../../../components/iconify';
+import Label from '../../../../components/label';
+// @mui
+// utils
+import { bgGradient } from '../../../../utils/cssStyles';
+// @types
+// components
+import Carousel from '../../../../components/carousel';
+import Image from '../../../../components/image';
 
+const THUMB_SIZE = 64;
+
+type StyledThumbnailsContainerProps = {
+  length: number;
+};
+
+const StyledThumbnailsContainer = styled('div', {
+  shouldForwardProp: (prop) => prop !== 'length',
+})<StyledThumbnailsContainerProps>(({ length, theme }) => ({
+  margin: theme.spacing(0, 'auto'),
+  position: 'relative',
+
+  '& .slick-slide': {
+    opacity: 0.48,
+    '&.slick-current': {
+      opacity: 1,
+    },
+    '& > div': {
+      padding: theme.spacing(0, 0.75),
+    },
+  },
+
+  ...(length === 1 && {
+    maxWidth: THUMB_SIZE * 1 + 16,
+  }),
+  ...(length === 2 && {
+    maxWidth: THUMB_SIZE * 2 + 32,
+  }),
+  ...((length === 3 || length === 4) && {
+    maxWidth: THUMB_SIZE * 3 + 48,
+  }),
+  ...(length >= 5 && {
+    maxWidth: THUMB_SIZE * 6,
+  }),
+  ...(length > 2 && {
+    '&:before, &:after': {
+      ...bgGradient({
+        direction: 'to left',
+        startColor: `${alpha(theme.palette.background.default, 0)} 0%`,
+        endColor: `${theme.palette.background.default} 100%`,
+      }),
+      top: 0,
+      zIndex: 9,
+      content: "''",
+      height: '100%',
+      position: 'absolute',
+      width: (THUMB_SIZE * 2) / 3,
+    },
+    '&:after': {
+      right: 0,
+      transform: 'scaleX(-1)',
+    },
+  }),
+}));
 // ----------------------------------------------------------------------
 
 interface FormValuesProps extends Omit<ICheckoutCartItem, 'colors'> {
@@ -126,26 +179,105 @@ export default function ProductDetailsSummary({
     }
   };
 
+  const theme = useTheme();
+  const isDesktop = useResponsive('up', 'md');
+
+  const carousel1 = useRef<Carousel | null>(null);
+
+  const carousel2 = useRef<Carousel | null>(null);
+
+  const [nav1, setNav1] = useState<Carousel>();
+
+  const [nav2, setNav2] = useState<Carousel>();
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [selectedImage, setSelectedImage] = useState<number>(-1);
+
+  const [currentTabTrade, setCurrentTabTrade] = useState<'line' | 'candle'>('line');
+
+  const imagesLightbox = product.images.map((img) => ({ src: img }));
+
+  const handleOpenLightbox = (imageUrl: string) => {
+    const imageIndex = imagesLightbox.findIndex((image) => image.src === imageUrl);
+    setSelectedImage(imageIndex);
+  };
+
+  const handleCloseLightbox = () => {
+    setSelectedImage(-1);
+  };
+
+  const carouselSettings1 = {
+    dots: false,
+    arrows: false,
+    slidesToShow: 1,
+    draggable: false,
+    slidesToScroll: 1,
+    adaptiveHeight: true,
+    beforeChange: (current: number, next: number) => setCurrentIndex(next),
+  };
+
+  const carouselSettings2 = {
+    dots: false,
+    arrows: false,
+    centerMode: true,
+    swipeToSlide: true,
+    focusOnSelect: true,
+    variableWidth: true,
+    centerPadding: '0px',
+    slidesToShow: product.images.length > 3 ? 3 : product.images.length,
+  };
+
+  useEffect(() => {
+    if (carousel1.current) {
+      setNav1(carousel1.current);
+    }
+    if (carousel2.current) {
+      setNav2(carousel2.current);
+    }
+  }, []);
+
+  useEffect(() => {
+    carousel1.current?.slickGoTo(currentIndex);
+  }, [currentIndex]);
+
+  const renderThumbnails = (
+    <StyledThumbnailsContainer length={product.images.length} sx={{ pt: 3 }}>
+      <Carousel {...carouselSettings2} asNavFor={nav1} ref={carousel2}>
+        {product.images.map((img, index) => (
+          <Image
+            key={img}
+            disabledEffect
+            alt="thumbnail"
+            src={img}
+            onClick={() => handleOpenLightbox(img)}
+            sx={{
+              width: THUMB_SIZE,
+              height: THUMB_SIZE,
+              borderRadius: 1.5,
+              cursor: 'pointer',
+              ...(currentIndex === index && {
+                border: `solid 2px ${theme.palette.primary.main}`,
+              }),
+            }}
+          />
+        ))}
+      </Carousel>
+    </StyledThumbnailsContainer>
+  );
+
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack
         spacing={3}
         sx={{
-          p: (theme) => ({
-            md: theme.spacing(5, 5, 0, 2),
+          p: (_theme) => ({
+            md: _theme.spacing(0, 5, 0, 2),
           }),
         }}
         {...other}
       >
-        <Stack spacing={2}>
-          <Label
-            variant="soft"
-            color={inventoryType === 'in_stock' ? 'success' : 'error'}
-            sx={{ textTransform: 'uppercase', mr: 'auto' }}
-          >
-            {sentenceCase(inventoryType || '')}
-          </Label>
-
+        <Stack spacing={0}>
           <Typography
             variant="overline"
             component="div"
@@ -156,18 +288,31 @@ export default function ProductDetailsSummary({
             {status}
           </Typography>
 
-          <Typography variant="h5">{name}</Typography>
+          <Typography variant="h5">
+            {name}{' '}
+            <Label
+              variant="soft"
+              color={inventoryType === 'In progress' ? 'success' : 'error'}
+              sx={{ textTransform: 'uppercase', mr: 'auto' }}
+            >
+              {sentenceCase('In progress')}
+            </Label>
+          </Typography>
+          {isDesktop ? (
+            <Typography variant="subtitle2" sx={{ color: 'text.disabled', fontWeight: '300' }}>
+              {NOTPUMP_DEFINE_FAIRLAUNCH}
+            </Typography>
+          ) : (
+            ''
+          )}
 
           <Stack direction="row" alignItems="center" spacing={1}>
-            <Rating value={totalRating} precision={0.1} readOnly />
-
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              ({fShortenNumber(totalReview)}
-              reviews)
+              {renderThumbnails}
             </Typography>
           </Stack>
 
-          <Typography variant="h4">
+          {/* <Typography variant="h4">
             {priceSale && (
               <Box
                 component="span"
@@ -178,86 +323,70 @@ export default function ProductDetailsSummary({
             )}
 
             {fCurrency(price)}
-          </Typography>
+          </Typography> */}
         </Stack>
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <Typography variant="subtitle2">Color</Typography>
+          <Typography variant="subtitle2">
+            {product.name.split(' ')[0].toUpperCase()} / ETH
+          </Typography>
+          <LinearProgress
+          variant="determinate"
+          value={Number(Math.random().toFixed(2)) * 100}
+          sx={{
+            mx: 2,
+            flexGrow: 1,
+            mr: 0.5,
+          }}
+        />
+        </Stack>
 
-          <Controller
-            name="colors"
-            control={control}
-            render={({ field }) => (
-              <ColorSinglePicker
-                colors={colors}
-                value={field.value}
-                onChange={field.onChange}
-                sx={{
-                  ...(colors.length > 4 && {
-                    maxWidth: 144,
-                    justifyContent: 'flex-end',
-                  }),
-                }}
-              />
-            )}
+        <Stack spacing={1}>
+          <Typography
+            variant="caption"
+            component="div"
+            sx={{ textAlign: 'right', color: 'text.secondary', cursor:'pointer' }}
+          >
+            ETH Balance: 1,23
+          </Typography>
+          <RHFTextField
+            size="small"
+            type="number"
+            name={`items[${0}].price`}
+            value={0.001}
+            label="WETH amount"
+            placeholder="0"
+            onChange={(event) => {}}
+            InputProps={{
+              startAdornment: <InputAdornment position="start">▷</InputAdornment>,
+            }}
+            sx={{ width: '100%' }}
           />
         </Stack>
 
-        <Stack direction="row" justifyContent="space-between">
-          <Typography variant="subtitle2" sx={{ height: 40, lineHeight: '40px', flexGrow: 1 }}>
-            Size
-          </Typography>
-
-          <RHFSelect
-            name="size"
-            size="small"
-            helperText={
-              <Link underline="always" color="inherit">
-                Size Chart
-              </Link>
-            }
-            sx={{
-              maxWidth: 96,
-              '& .MuiFormHelperText-root': {
-                mx: 0,
-                mt: 1,
-                textAlign: 'right',
-              },
-            }}
+        <Stack spacing={1}>
+          <Typography
+            variant="caption"
+            component="div"
+            sx={{ textAlign: 'right', color: 'text.secondary',  cursor:'pointer'}}
           >
-            {sizes.map((size) => (
-              <MenuItem key={size} value={size}>
-                {size}
-              </MenuItem>
-            ))}
-          </RHFSelect>
-        </Stack>
-
-        <Stack direction="row" justifyContent="space-between">
-          <Typography variant="subtitle2" sx={{ height: 36, lineHeight: '36px' }}>
-            Quantity
+            {product.name.split(' ')[0].toUpperCase()} Balance: 15k
           </Typography>
-
-          <Stack spacing={1}>
-            <IncrementerButton
-              name="quantity"
-              quantity={values.quantity}
-              disabledDecrease={values.quantity <= 1}
-              disabledIncrease={values.quantity >= available}
-              onIncrease={() => setValue('quantity', values.quantity + 1)}
-              onDecrease={() => setValue('quantity', values.quantity - 1)}
-            />
-
-            <Typography
-              variant="caption"
-              component="div"
-              sx={{ textAlign: 'right', color: 'text.secondary' }}
-            >
-              Available: {available}
-            </Typography>
-          </Stack>
+          <RHFTextField
+            size="small"
+            type="number"
+            name={`items[${0}].price`}
+            value={12050}
+            label={`${product.name.split(' ')[0].toUpperCase()} amount`}
+            placeholder="0"
+            onChange={(event) => {}}
+            InputProps={{
+              startAdornment: <InputAdornment position="start">▷</InputAdornment>,
+            }}
+            sx={{ width: '100%' }}
+          />
         </Stack>
 
         <Divider sx={{ borderStyle: 'dashed' }} />
@@ -267,17 +396,16 @@ export default function ProductDetailsSummary({
             fullWidth
             disabled={isMaxQuantity}
             size="large"
-            color="warning"
+            color="success"
             variant="contained"
-            startIcon={<Iconify icon="ic:round-add-shopping-cart" />}
             onClick={handleAddCart}
             sx={{ whiteSpace: 'nowrap' }}
           >
-            Add to Cart
+            Buy
           </Button>
 
-          <Button fullWidth size="large" type="submit" variant="contained">
-            Buy Now
+          <Button fullWidth color="error" size="large" type="submit" variant="contained">
+            Sell
           </Button>
         </Stack>
 
@@ -289,6 +417,14 @@ export default function ProductDetailsSummary({
           ))}
         </Stack>
       </Stack>
+
+      <Lightbox
+        index={selectedImage}
+        slides={imagesLightbox}
+        open={selectedImage >= 0}
+        close={handleCloseLightbox}
+        onGetCurrentIndex={(index) => setCurrentIndex(index)}
+      />
     </FormProvider>
   );
 }

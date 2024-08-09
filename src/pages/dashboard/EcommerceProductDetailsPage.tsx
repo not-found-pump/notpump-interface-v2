@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { alpha } from '@mui/material/styles';
 import { Box, Tab, Tabs, Card, Grid, Divider, Container, Typography, Stack } from '@mui/material';
 // redux
+import {DN404_DEFINE, NOTPUMP_DEFINE_FAIRLAUNCH, NOTPUMP_DN404} from 'src/descriptions/DN404';
 import { useDispatch, useSelector } from '../../redux/store';
 import { getProduct, addToCart, gotoStep } from '../../redux/slices/DN404';
 // routes
@@ -88,23 +89,16 @@ export default function EcommerceProductDetailsPage() {
   return (
     <>
       <Helmet>
-        <title>{`Ecommerce: ${product?.name || ''} | NotPump`}</title>
+        <title>{`Token ${product?.name.split(' ')[0].toUpperCase()} / (${product?.name}) | NotPump`}</title>
       </Helmet>
 
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <CustomBreadcrumbs
-          heading="Product Details"
+          heading={`${product?.name.split(' ')[0].toUpperCase()} / (${product?.name})`}
           links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
             {
-              name: 'E-Commerce',
-              href: PATH_DASHBOARD.eCommerce.root,
+              name: NOTPUMP_DN404
             },
-            {
-              name: 'Shop',
-              href: PATH_DASHBOARD.eCommerce.shop,
-            },
-            { name: product?.name },
           ]}
         />
 
