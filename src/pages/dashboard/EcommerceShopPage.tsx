@@ -87,22 +87,14 @@ export default function EcommerceShopPage() {
   return (
     <>
       <Helmet>
-        <title> Ecommerce: Shop | NotPump</title>
+        <title> DN404 list | NotPump</title>
       </Helmet>
 
       <FormProvider methods={methods}>
         <Container maxWidth={themeStretch ? false : 'lg'}>
-          <CustomBreadcrumbs
-            heading="Shop"
-            links={[
-              { name: 'Dashboard', href: PATH_DASHBOARD.root },
-              {
-                name: 'E-Commerce',
-                href: PATH_DASHBOARD.eCommerce.root,
-              },
-              { name: 'Shop' },
-            ]}
-          />
+          <Typography variant="h4" gutterBottom>
+            DN404 list
+          </Typography>
 
           <Stack
             spacing={2}

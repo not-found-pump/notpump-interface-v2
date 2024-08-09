@@ -10,12 +10,14 @@ import {
   Typography,
   CircularProgress,
   LinearProgress,
+  Tooltip,
 } from '@mui/material';
 // routes
 import TextMaxLine from 'src/components/text-max-line';
 import { formatAddress } from 'src/utils/formatAddress';
 import ProgressLinear from 'src/sections/_examples/mui/progress/ProgressLinear';
 import { color } from '@mui/system';
+import { useLocales } from 'src/locales';
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // utils
 import { fCurrency, fShortenNumber } from '../../../../utils/formatNumber';
@@ -44,6 +46,7 @@ export default function DN404Card({ product }: Props) {
   const dispatch = useDispatch();
 
   const linkTo = PATH_DASHBOARD.eCommerce.view(paramCase(name));
+  const { translate } = useLocales();
 
   const handleAddCart = async () => {
     const newProduct = {
@@ -111,15 +114,39 @@ export default function DN404Card({ product }: Props) {
 
         <Image alt={name} src={coverUrl} ratio="1/1" sx={{ borderRadius: 1.5 }} />
       </Box>
-      <Stack pt={1} direction="row" alignItems="center">
+      <Stack spacing={1} sx={{ pl: 1,pr:3, pt: 0}}  direction="row" alignItems="center">
         <LinearProgress
           variant="determinate"
           value={Number(Math.random().toFixed(2)) * 100}
           sx={{
             mx: 2,
             flexGrow: 1,
+            mr: 0.5,
           }}
         />
+              <Tooltip title={`${translate('abc')}`} arrow>
+          <Box component="span">
+            <Iconify icon="eva:info-outline" color="gray" width={16} />
+          </Box>
+        </Tooltip>
+      </Stack>
+
+      <Stack spacing={1} sx={{ pl: 1, pr:3, pt: 0}} direction="row" alignItems="center">
+        <LinearProgress
+          color="warning"
+          variant="determinate"
+          value={Number(Math.random().toFixed(2)) * 100}
+          sx={{
+            mx: 2,
+            mr: 0.5,
+            flexGrow: 1,
+          }}
+        />
+         <Tooltip title={`${translate('abc')}`} arrow>
+          <Box component="span">
+            <Iconify icon="eva:info-outline" color="gray" width={16} />
+          </Box>
+        </Tooltip>
       </Stack>
       <Stack spacing={1} sx={{ p: 3, pt: 2 }}>
         <Link component={RouterLink} to={linkTo} color="inherit" variant="subtitle2" noWrap>
@@ -129,13 +156,20 @@ export default function DN404Card({ product }: Props) {
 
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack spacing={0.5} sx={{ typography: 'subtitle1' }}>
-            <Typography sx={{ color: 'text.secondary' }} >MC: {fCurrency(product?.marketCap || Number(Math.random().toFixed(4)) * 100_000)}</Typography>
-            <Typography sx={{ color: 'text.secondary' }} >Holders: {product?.holdersCount || Number(Math.random().toFixed(2)) * 100}</Typography>
+            <Typography sx={{ color: 'text.secondary' }}>
+              MC: {fCurrency(product?.marketCap || Number(Math.random().toFixed(4)) * 100_000)}
+            </Typography>
+            <Typography sx={{ color: 'text.secondary' }}>
+              Holders:{' '}
+              {product?.holdersCount || Number(Math.round(Number(Math.random().toFixed(2)) * 100))}
+            </Typography>
           </Stack>
 
           <Stack spacing={0.5} sx={{ typography: 'subtitle1' }}>
             <Box component="span">{fCurrency(price / 100_000)}</Box>
-            <Box component="span"><ColorPreview colors={colors} /></Box>
+            <Box component="span">
+              <ColorPreview colors={colors} />
+            </Box>
           </Stack>
         </Stack>
       </Stack>
