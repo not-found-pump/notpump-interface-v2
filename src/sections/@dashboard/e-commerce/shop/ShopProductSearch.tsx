@@ -42,7 +42,7 @@ export default function ShopProductSearch() {
   };
 
   const handleGotoProduct = (name: string) => {
-    navigate(PATH_DASHBOARD.eCommerce.view(paramCase(name)));
+    navigate(PATH_DASHBOARD.dn404.view(paramCase(name)));
   };
 
   const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {

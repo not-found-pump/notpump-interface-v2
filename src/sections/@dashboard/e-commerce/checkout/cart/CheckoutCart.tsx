@@ -72,7 +72,7 @@ export default function CheckoutCart({
 
         <Button
           component={RouterLink}
-          to={PATH_DASHBOARD.eCommerce.root}
+          to={PATH_DASHBOARD.dn404.root}
           color="inherit"
           startIcon={<Iconify icon="eva:arrow-ios-back-fill" />}
         >

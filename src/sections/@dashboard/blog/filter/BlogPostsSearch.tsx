@@ -42,7 +42,7 @@ export default function BlogPostsSearch() {
   };
 
   const handleClick = (title: string) => {
-    navigate(PATH_DASHBOARD.blog.view(paramCase(title)));
+    // navigate(PATH_DASHBOARD.createDn404.create(paramCase(title)));
   };
 
   const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {

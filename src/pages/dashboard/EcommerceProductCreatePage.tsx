@@ -27,7 +27,7 @@ export default function EcommerceProductCreatePage() {
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             {
               name: 'E-Commerce',
-              href: PATH_DASHBOARD.eCommerce.root,
+              href: PATH_DASHBOARD.dn404.root,
             },
             { name: 'New product' },
           ]}

@@ -90,7 +90,7 @@ export default function BlogPostPage() {
             },
             {
               name: 'Blog',
-              href: PATH_DASHBOARD.blog.root,
+              href: PATH_DASHBOARD.createDn404.create,
             },
             {
               name: post?.title,

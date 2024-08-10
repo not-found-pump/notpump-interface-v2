@@ -103,7 +103,7 @@ export default function BlogNewPostForm() {
       reset();
       handleClosePreview();
       enqueueSnackbar('Post success!');
-      navigate(PATH_DASHBOARD.blog.posts);
+      navigate(PATH_DASHBOARD.createDn404.create);
       console.log('DATA', data);
     } catch (error) {
       console.error(error);
@@ -135,7 +135,7 @@ export default function BlogNewPostForm() {
         <Grid item xs={12} md={8}>
           <Card sx={{ p: 3 }}>
             <Stack spacing={3}>
-              <RHFTextField name="title" label="Post Title" />
+              <RHFTextField name="title" label="Title" />
 
               <RHFTextField name="description" label="Description" multiline rows={3} />
 
@@ -171,12 +171,19 @@ export default function BlogNewPostForm() {
                   name="publish"
                   label="Publish"
                   labelPlacement="start"
-                  sx={{ mb: 1, mx: 0, width: 1, justifyContent: 'space-between' }}
+                  sx={{ mb: 0, mx: 0, width: 1, justifyContent: 'space-between' }}
                 />
 
                 <RHFSwitch
-                  name="comments"
-                  label="Enable comments"
+                  name="fairlaunch"
+                  label="Fairlaunch"
+                  labelPlacement="start"
+                  sx={{ mx: 0, width: 1, justifyContent: 'space-between' }}
+                />
+
+                <RHFSwitch
+                  name="derivative"
+                  label="Community Derivative"
                   labelPlacement="start"
                   sx={{ mx: 0, width: 1, justifyContent: 'space-between' }}
                 />

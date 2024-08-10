@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 // routes
+import {NOTPUMP_DN404} from 'src/descriptions/DN404';
 import { PATH_DASHBOARD } from '../../routes/paths';
 // components
 import { useSettingsContext } from '../../components/settings';
@@ -11,7 +12,7 @@ import { BlogNewPostForm } from '../../sections/@dashboard/blog';
 
 // ----------------------------------------------------------------------
 
-export default function BlogNewPostPage() {
+export default function DN404Create() {
   const { themeStretch } = useSettingsContext();
 
   return (
@@ -22,18 +23,10 @@ export default function BlogNewPostPage() {
 
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <CustomBreadcrumbs
-          heading="Create a new post"
+          heading="Create your DN404"
           links={[
             {
-              name: 'Dashboard',
-              href: PATH_DASHBOARD.root,
-            },
-            {
-              name: 'Blog',
-              href: PATH_DASHBOARD.blog.root,
-            },
-            {
-              name: 'Create',
+              name: NOTPUMP_DN404,
             },
           ]}
         />

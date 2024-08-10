@@ -68,13 +68,16 @@ export const PATH_DASHBOARD = {
     edit: (name: string) => path(ROOTS_DASHBOARD, `/user/${name}/edit`),
     demoEdit: path(ROOTS_DASHBOARD, `/user/reece-chung/edit`),
   },
-  eCommerce: {
-    root: path(ROOTS_DASHBOARD, '/e-commerce'),
-    shop: path(ROOTS_DASHBOARD, '/e-commerce/shop'),
+  createDn404: {
+    create: path(ROOTS_DASHBOARD, '/dn404/create'),
+  },
+  dn404: {
+    root: path(ROOTS_DASHBOARD, '/dn404s'),
+    bondingCurve: path(ROOTS_DASHBOARD, '/dn404s/bonding-curve'),
     list: path(ROOTS_DASHBOARD, '/e-commerce/list'),
     checkout: path(ROOTS_DASHBOARD, '/e-commerce/checkout'),
     new: path(ROOTS_DASHBOARD, '/e-commerce/product/new'),
-    view: (name: string) => path(ROOTS_DASHBOARD, `/e-commerce/product/${name}`),
+    view: (name: string) => path(ROOTS_DASHBOARD, `/dn404s/bonding-curve/${name}`),
     edit: (name: string) => path(ROOTS_DASHBOARD, `/e-commerce/product/${name}/edit`),
     demoEdit: path(ROOTS_DASHBOARD, '/e-commerce/product/nike-blazer-low-77-vintage/edit'),
     demoView: path(ROOTS_DASHBOARD, '/e-commerce/product/nike-air-force-1-ndestrukt'),
@@ -88,13 +91,13 @@ export const PATH_DASHBOARD = {
     demoEdit: path(ROOTS_DASHBOARD, '/invoice/e99f09a7-dd88-49d5-b1c8-1daf80c2d7b1/edit'),
     demoView: path(ROOTS_DASHBOARD, '/invoice/e99f09a7-dd88-49d5-b1c8-1daf80c2d7b5'),
   },
-  blog: {
-    root: path(ROOTS_DASHBOARD, '/blog'),
-    posts: path(ROOTS_DASHBOARD, '/blog/posts'),
-    new: path(ROOTS_DASHBOARD, '/blog/new'),
-    view: (title: string) => path(ROOTS_DASHBOARD, `/blog/post/${title}`),
-    demoView: path(ROOTS_DASHBOARD, '/blog/post/apply-these-7-secret-techniques-to-improve-event'),
-  },
+  // createDn404: {
+  //   root: path(ROOTS_DASHBOARD, '/create-dn404'),
+  //   posts: path(ROOTS_DASHBOARD, '/blog/posts'),
+  //   new: path(ROOTS_DASHBOARD, '/create-dn404'),
+  //   view: (title: string) => path(ROOTS_DASHBOARD, `/blog/post/${title}`),
+  //   demoView: path(ROOTS_DASHBOARD, '/blog/post/apply-these-7-secret-techniques-to-improve-event'),
+  // },
 };
 
 export const PATH_DOCS = {

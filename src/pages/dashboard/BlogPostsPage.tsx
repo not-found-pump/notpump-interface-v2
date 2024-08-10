@@ -75,7 +75,7 @@ export default function BlogPostsPage() {
           action={
             <Button
               component={RouterLink}
-              to={PATH_DASHBOARD.blog.new}
+              to={PATH_DASHBOARD.createDn404.create}
               variant="contained"
               startIcon={<Iconify icon="eva:plus-fill" />}
             >

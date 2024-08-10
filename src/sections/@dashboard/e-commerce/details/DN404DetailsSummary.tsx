@@ -173,7 +173,7 @@ export default function DN404DetailsSummary({
         });
       }
       onGotoStep(0);
-      navigate(PATH_DASHBOARD.eCommerce.checkout);
+      navigate(PATH_DASHBOARD.dn404.checkout);
     } catch (error) {
       console.error(error);
     }

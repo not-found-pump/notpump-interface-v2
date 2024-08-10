@@ -228,7 +228,7 @@ export default function DN404TradeHistory() {
   };
 
   return (
-    <>
+    <div style={{width: '100%'}}>
       <Helmet>
         <title>Token history | NotPump</title>
       </Helmet>
@@ -441,7 +441,7 @@ export default function DN404TradeHistory() {
           </Button>
         }
       />
-    </>
+    </div>
   );
 }
 

@@ -77,7 +77,7 @@ export const UserEditPage = Loadable(lazy(() => import('../pages/dashboard/UserE
 // DASHBOARD: BLOG
 export const BlogPostsPage = Loadable(lazy(() => import('../pages/dashboard/BlogPostsPage')));
 export const BlogPostPage = Loadable(lazy(() => import('../pages/dashboard/BlogPostPage')));
-export const BlogNewPostPage = Loadable(lazy(() => import('../pages/dashboard/BlogNewPostPage')));
+export const DN404Create = Loadable(lazy(() => import('../pages/dashboard/DN404Create')));
 
 // DASHBOARD: FILE MANAGER
 export const FileManagerPage = Loadable(lazy(() => import('../pages/dashboard/FileManagerPage')));

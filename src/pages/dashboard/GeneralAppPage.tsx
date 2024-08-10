@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useTheme } from '@mui/material/styles';
 import { Container, Grid, Stack, Button } from '@mui/material';
 // auth
+import {AnalyticsConversionRates} from 'src/sections/@dashboard/general/analytics';
 import { useAuthContext } from '../../auth/useAuthContext';
 // _mock_
 import {
@@ -29,6 +30,7 @@ import {
 } from '../../sections/@dashboard/general/app';
 // assets
 import { SeoIllustration } from '../../assets/illustrations';
+import DN404TradeHistory from './DN404TradeHistory';
 
 // ----------------------------------------------------------------------
 
@@ -47,7 +49,7 @@ export default function GeneralAppPage() {
 
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={8}>
+          {/* <Grid item xs={12} md={8}>
             <AppWelcome
               title={`Welcome back! \n ${user?.displayName}`}
               description="If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything."
@@ -62,13 +64,13 @@ export default function GeneralAppPage() {
               }
               action={<Button variant="contained">Go Now</Button>}
             />
-          </Grid>
+          </Grid> */}
 
-          <Grid item xs={12} md={4}>
+          {/* <Grid item xs={12} md={4}>
             <AppFeatured list={_appFeatured} />
-          </Grid>
+          </Grid> */}
 
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={3}>
             <AppWidgetSummary
               title="Total Active Users"
               percent={2.6}
@@ -80,9 +82,9 @@ export default function GeneralAppPage() {
             />
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={3}>
             <AppWidgetSummary
-              title="Total Installed"
+              title="Total Trades Volume"
               percent={0.2}
               total={4876}
               chart={{
@@ -92,9 +94,9 @@ export default function GeneralAppPage() {
             />
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={3}>
             <AppWidgetSummary
-              title="Total Downloads"
+              title="Total Derivative Volume"
               percent={-0.1}
               total={678}
               chart={{
@@ -104,21 +106,34 @@ export default function GeneralAppPage() {
             />
           </Grid>
 
+          <Grid item xs={12} md={3}>
+            <AppWidgetSummary
+              title="Total Value Lock"
+              percent={-0.1}
+              total={678}
+              chart={{
+                colors: [theme.palette.warning.main],
+                series: [8, 9, 31, 8, 16, 37, 8, 33, 46, 31],
+              }}
+            />
+          </Grid>
           <Grid item xs={12} md={6} lg={4}>
+            {/* <AppTopRelated title="Trending DN404s bonding curve" list={_appRelated} /> */}
+
             <AppCurrentDownload
-              title="Current Download"
+              title="Total volume ($)"
               chart={{
                 colors: [
-                  theme.palette.primary.main,
-                  theme.palette.info.main,
+                  theme.palette.success.main,
                   theme.palette.error.main,
+                  theme.palette.info.main,
                   theme.palette.warning.main,
                 ],
                 series: [
-                  { label: 'Mac', value: 12244 },
-                  { label: 'Window', value: 53345 },
-                  { label: 'iOS', value: 44313 },
-                  { label: 'Android', value: 78343 },
+                  { label: 'Buy', value: 12244 },
+                  { label: 'Sell', value: 53345 },
+                  { label: 'Bullish', value: 44313 },
+                  { label: 'Bearish', value: 78343 },
                 ],
               }}
             />
@@ -126,7 +141,7 @@ export default function GeneralAppPage() {
 
           <Grid item xs={12} md={6} lg={8}>
             <DN404LineChart
-              title="Area Installed"
+              title="Long short Ratio (Derivative)"
               subheader="(+43%) than last year"
               chart={{
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
@@ -134,15 +149,8 @@ export default function GeneralAppPage() {
                   {
                     year: '2019',
                     data: [
-                      { name: 'Asia', data: [10, 41, 35, 51, 49, 62, 69, 91, 148] },
-                      { name: 'America', data: [10, 34, 13, 56, 77, 88, 99, 77, 45] },
-                    ],
-                  },
-                  {
-                    year: '2020',
-                    data: [
-                      { name: 'Asia', data: [148, 91, 69, 62, 49, 51, 35, 41, 10] },
-                      { name: 'America', data: [45, 77, 99, 88, 77, 56, 13, 34, 10] },
+                      { name: 'Long ratio', data: [0.10, 0.41, 0.35, 0.51, 0.49, 0.62, 0.69, 0.91] },
+                      { name: 'Short ratio', data: [0.10, 0.34, 0.13, 0.56, 0.77, 0.88, 0.99, 0.77] },
                     ],
                   },
                 ],
@@ -151,32 +159,39 @@ export default function GeneralAppPage() {
           </Grid>
 
           <Grid item xs={12} lg={8}>
-            <AppNewInvoice
-              title="New Invoice"
-              tableData={_appInvoices}
-              tableLabels={[
-                { id: 'id', label: 'Invoice ID' },
-                { id: 'category', label: 'Category' },
-                { id: 'price', label: 'Price' },
-                { id: 'status', label: 'Status' },
-                { id: '' },
-              ]}
+            <AnalyticsConversionRates
+              title="Top active volume"
+              subheader="Region volume DN404s fairlaunch ($)"
+              chart={{
+                series: [
+                  { label: 'Italy', value: 400 },
+                  { label: 'Japan', value: 430 },
+                  { label: 'China', value: 448 },
+                  { label: 'Canada', value: 470 },
+                  { label: 'France', value: 540 },
+                  { label: 'Germany', value: 580 },
+                  { label: 'South Korea', value: 690 },
+                  { label: 'Netherlands', value: 1100 },
+                  { label: 'United States', value: 1200 },
+                  { label: 'United Kingdom', value: 1380 },
+                ],
+              }}
             />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
-            <AppTopRelated title="Top Related Applications" list={_appRelated} />
+            <AppTopRelated title="Trending DN404s bonding curve" list={_appRelated} />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
+          {/* <Grid item xs={12} md={6} lg={4}>
             <AppTopInstalledCountries title="Top Installed Countries" list={_appInstalled} />
-          </Grid>
+          </Grid> */}
 
-          <Grid item xs={12} md={6} lg={4}>
+          {/* <Grid item xs={12} md={6} lg={4}>
             <AppTopAuthors title="Top Authors" list={_appAuthors} />
-          </Grid>
+          </Grid> */}
 
-          <Grid item xs={12} md={6} lg={4}>
+          {/* <Grid item xs={12} md={6} lg={4}>
             <Stack spacing={3}>
               <AppWidget
                 title="Conversion"
@@ -197,7 +212,7 @@ export default function GeneralAppPage() {
                 }}
               />
             </Stack>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </>

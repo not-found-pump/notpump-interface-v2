@@ -46,7 +46,7 @@ import {
   // Dashboard: Blog
   BlogPostsPage,
   BlogPostPage,
-  BlogNewPostPage,
+  DN404Create,
   // Dashboard: FileManager
   FileManagerPage,
   // Dashboard: App
@@ -182,15 +182,23 @@ export default function Router() {
         { path: 'booking', element: <GeneralBookingPage /> },
         { path: 'file', element: <GeneralFilePage /> },
         {
-          path: 'e-commerce',
+          path: 'dn404s',
           children: [
-            { element: <Navigate to="/dashboard/e-commerce/shop" replace />, index: true },
-            { path: 'shop', element: <DN404Fairlaunch /> },
-            { path: 'product/:name', element: <DN404DetailsPage /> },
-            { path: 'list', element: <EcommerceProductListPage /> },
-            { path: 'product/new', element: <EcommerceProductCreatePage /> },
-            { path: 'product/:name/edit', element: <EcommerceProductEditPage /> },
-            { path: 'checkout', element: <EcommerceCheckoutPage /> },
+            { element: <Navigate to="/dashboard/dn404s/bonding-curve" replace />, index: true },
+            { path: 'bonding-curve', element: <DN404Fairlaunch /> },
+            { path: 'bonding-curve/:name', element: <DN404DetailsPage /> },
+            // { path: 'create', element: <DN404Create/>},
+            // { path: 'list', element: <EcommerceProductListPage /> },
+            // { path: 'product/new', element: <EcommerceProductCreatePage /> },
+            // { path: 'product/:name/edit', element: <EcommerceProductEditPage /> },
+            // { path: 'checkout', element: <EcommerceCheckoutPage /> },
+          ],
+        },
+        {
+          path: 'dn404',
+          children: [
+            { element: <Navigate to="/dashboard/dn404/create" replace />, index: true },
+            { path: 'create', element: <DN404Create/>},
           ],
         },
         {
@@ -215,15 +223,7 @@ export default function Router() {
             { path: 'new', element: <InvoiceCreatePage /> },
           ],
         },
-        {
-          path: 'blog',
-          children: [
-            { element: <Navigate to="/dashboard/blog/posts" replace />, index: true },
-            { path: 'posts', element: <BlogPostsPage /> },
-            { path: 'post/:title', element: <BlogPostPage /> },
-            { path: 'new', element: <BlogNewPostPage /> },
-          ],
-        },
+      
         { path: 'files-manager', element: <FileManagerPage /> },
         {
           path: 'mail',

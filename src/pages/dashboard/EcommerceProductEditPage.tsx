@@ -45,7 +45,7 @@ export default function EcommerceProductEditPage() {
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             {
               name: 'E-Commerce',
-              href: PATH_DASHBOARD.eCommerce.root,
+              href: PATH_DASHBOARD.dn404.root,
             },
             { name: currentProduct?.name },
           ]}

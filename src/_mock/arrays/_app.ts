@@ -1,24 +1,22 @@
+import DN404MediasList from '../../DN404.media.json';
 import _mock from '../_mock';
-import { randomNumberRange, randomInArray } from '../utils';
-
+import { randomInArray, randomNumberRange } from '../utils';
 // ----------------------------------------------------------------------
 
-export const _appRelated = ['Chrome', 'Drive', 'Dropbox', 'Evernote', 'Github'].map(
-  (name, index) => ({
-    id: _mock.id(index),
-    name,
-    system: (index === 2 && 'Windows') || (index === 4 && 'Windows') || 'Mac',
-    price: index === 0 || index === 2 || index === 4 ? 0 : _mock.number.price(index),
-    rating: _mock.number.rating(index),
-    review: randomNumberRange(999, 99999),
-    shortcut:
-      (name === 'Chrome' && '/assets/icons/apps/ic_chrome.svg') ||
-      (name === 'Drive' && '/assets/icons/apps/ic_drive.svg') ||
-      (name === 'Dropbox' && '/assets/icons/apps/ic_dropbox.svg') ||
-      (name === 'Evernote' && '/assets/icons/apps/ic_evernote.svg') ||
-      '/assets/icons/apps/ic_github.svg',
-  })
-);
+export const _appRelated = ['Jiran', 'Usop', 'Firon', 'Rades', 'Ports'].map((name, index) => ({
+  id: _mock.id(index),
+  name,
+  system: (index === 2 && 'Windows') || (index === 4 && 'Windows') || 'Mac',
+  price: index === 0 || index === 2 || index === 4 ? 0 : _mock.number.price(index),
+  rating: _mock.number.rating(index),
+  review: randomNumberRange(999, 99999),
+  shortcut:
+    (name === 'Jiran' && randomInArray(DN404MediasList)) ||
+    (name === 'Usop' && randomInArray(DN404MediasList)) ||
+    (name === 'Firon' && randomInArray(DN404MediasList)) ||
+    (name === 'Rades' && randomInArray(DN404MediasList)) ||
+    randomInArray(DN404MediasList),
+}));
 
 // ----------------------------------------------------------------------
 

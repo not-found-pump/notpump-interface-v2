@@ -38,7 +38,7 @@ type Props = {
 
 export default function CartWidget({ totalItems }: Props) {
   return (
-    <RouterLink to={PATH_DASHBOARD.eCommerce.checkout}>
+    <RouterLink to={PATH_DASHBOARD.dn404.checkout}>
       <StyledRoot>
         <Badge showZero badgeContent={totalItems} color="error" max={99}>
           <Iconify icon="eva:shopping-cart-fill" width={24} />

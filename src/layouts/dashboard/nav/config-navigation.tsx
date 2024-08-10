@@ -1,4 +1,5 @@
 // routes
+import {DN404_DEFINE} from 'src/descriptions/DN404';
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
 import Label from '../../../components/label';
@@ -45,10 +46,6 @@ const navConfig = [
         title: 'home',
         path: PATH_DASHBOARD.general.app,
         icon: ICONS.analytics,
-        children: [
-          { title: 'analytics', path: PATH_DASHBOARD.general.analytics, icon: ICONS.analytics },
-          { title: 'banking', path: PATH_DASHBOARD.general.banking, icon: ICONS.banking },
-        ],
       },
       // { title: 'ecommerce', path: PATH_DASHBOARD.general.ecommerce, icon: ICONS.ecommerce },
       // { title: 'analytics', path: PATH_DASHBOARD.general.analytics, icon: ICONS.analytics },
@@ -72,35 +69,32 @@ const navConfig = [
       // USER
       // { title: 'wallet', icon: ICONS.user, path: PATH_DASHBOARD.user.profile },
       {
-        title: 'Tokens',
-        path: PATH_DASHBOARD.eCommerce.shop,
+        title: 'DN404 fairlaunch',
+        path: PATH_DASHBOARD.dn404.root,
         icon: ICONS.menuItem,
         caption: 'NotPump use DN404 as a main token - is an implementation of a co-joined ERC20 and ERC721 pair.',
-        children: [
-          { title: 'Tokenft', icon: ICONS.blog, path: PATH_DASHBOARD.blog.posts },
-        ]
       },
       // INVOICE
 
       // BLOG
-      { title: 'Create', icon: ICONS.booking, path: PATH_DASHBOARD.blog.new },
+      { title: 'Create DN404', icon: ICONS.booking, path: PATH_DASHBOARD.createDn404.create, caption: DN404_DEFINE},
       {
         title: 'Docs',
         path: 'https://www.notion.so/Notpump-172f28f798ed4c66a4bae4b96c16d7a5?pvs=4',
-        icon: ICONS.blank,
+        icon: ICONS.external,
       },
 
-      {
-        title: 'Design',
-        path: PATH_DASHBOARD.invoice.root,
-        icon: ICONS.invoice,
-        children: [
-          { title: 'tx history', path: PATH_DASHBOARD.invoice.list },
-          { title: 'Layout for fairlaunch descriptions', path: PATH_DASHBOARD.invoice.demoView },
-          // { title: 'create', path: PATH_DASHBOARD.invoice.new },
-          // { title: 'edit', path: PATH_DASHBOARD.invoice.demoEdit },
-        ],
-      },
+      // {
+      //   title: 'Design',
+      //   path: PATH_DASHBOARD.invoice.root,
+      //   icon: ICONS.invoice,
+      //   children: [
+      //     { title: 'tx history', path: PATH_DASHBOARD.invoice.list },
+      //     { title: 'Layout for fairlaunch descriptions', path: PATH_DASHBOARD.invoice.demoView },
+      //     // { title: 'create', path: PATH_DASHBOARD.invoice.new },
+      //     // { title: 'edit', path: PATH_DASHBOARD.invoice.demoEdit },
+      //   ],
+      // },
 
       // {
       //   title: 'user',
@@ -119,24 +113,24 @@ const navConfig = [
       // E-COMMERCE
       // {
       //   title: 'ecommerce',
-      //   path: PATH_DASHBOARD.eCommerce.root,
+      //   path: PATH_DASHBOARD.dn404.root,
       //   icon: ICONS.cart,
       //   children: [
-      //     { title: 'shop', path: PATH_DASHBOARD.eCommerce.shop },
-      //     { title: 'product', path: PATH_DASHBOARD.eCommerce.demoView },
-      //     { title: 'list', path: PATH_DASHBOARD.eCommerce.list },
-      //     { title: 'create', path: PATH_DASHBOARD.eCommerce.new },
-      //     { title: 'edit', path: PATH_DASHBOARD.eCommerce.demoEdit },
-      //     { title: 'checkout', path: PATH_DASHBOARD.eCommerce.checkout },
+      //     { title: 'shop', path: PATH_DASHBOARD.PATH_DASHBOARD.dn404 },
+      //     { title: 'product', path: PATH_DASHBOARD.dn404.demoView },
+      //     { title: 'list', path: PATH_DASHBOARD.dn404.list },
+      //     { title: 'create', path: PATH_DASHBOARD.dn404.new },
+      //     { title: 'edit', path: PATH_DASHBOARD.dn404.demoEdit },
+      //     { title: 'checkout', path: PATH_DASHBOARD.dn404.checkout },
       //   ],
       // },
       // {
       //   title: 'blog',
-      //   path: PATH_DASHBOARD.blog.root,
+      //   path: PATH_DASHBOARD.createDn404.create.root,
       //   icon: ICONS.blog,
       //   children: [
-      //     { title: 'post', path: PATH_DASHBOARD.blog.demoView },
-      //     { title: 'create', path: PATH_DASHBOARD.blog.new },
+      //     { title: 'post', path: PATH_DASHBOARD.createDn404.create.demoView },
+      //     { title: 'create', path: PATH_DASHBOARD.createDn404.create.new },
       //   ],
       // },
       // {

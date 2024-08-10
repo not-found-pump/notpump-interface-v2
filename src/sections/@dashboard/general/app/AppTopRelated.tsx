@@ -64,23 +64,20 @@ function ApplicationItem({ app }: ApplicationItemProps) {
           bgcolor: 'background.neutral',
         }}
       >
-        <Box component="img" src={shortcut} sx={{ width: 24, height: 24 }} />
+        <Box component="img" src={shortcut} sx={{ width: 48, height: 48,borderRadius: 1.5,
+ }} />
       </Box>
 
       <Box sx={{ flexGrow: 1, minWidth: 160 }}>
         <Typography variant="subtitle2">{name}</Typography>
         <Stack direction="row" alignItems="center" sx={{ mt: 0.5, color: 'text.secondary' }}>
-          <Iconify
-            width={16}
-            icon={system === 'Mac' ? 'ant-design:apple-filled' : 'ant-design:windows-filled'}
-          />
 
-          <Typography variant="caption" sx={{ ml: 0.5, mr: 1 }}>
-            {system}
+          <Typography variant="caption" sx={{ mr: 1 }}>
+            {name.toUpperCase()}
           </Typography>
 
           <Label variant="soft" color={price === 0 ? 'success' : 'error'}>
-            {price === 0 ? 'Free' : fCurrency(price)}
+            {fCurrency(Math.random())}
           </Label>
         </Stack>
       </Box>

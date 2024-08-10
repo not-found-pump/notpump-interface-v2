@@ -44,7 +44,7 @@ export default function DN404Card({ product }: Props) {
 
   const dispatch = useDispatch();
 
-  const linkTo = PATH_DASHBOARD.eCommerce.view(paramCase(name));
+  const linkTo = PATH_DASHBOARD.dn404.view(paramCase(name));
   const { translate } = useLocales();
 
   const handleAddCart = async () => {
