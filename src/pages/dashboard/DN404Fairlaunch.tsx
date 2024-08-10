@@ -146,7 +146,7 @@ export default function DN404Fairlaunch() {
 
           <DN404List products={dataFiltered} loading={!products.length && isDefault} />
 
-          <CartWidget totalItems={checkout.totalItems} />
+          {/* <CartWidget totalItems={checkout.totalItems} /> */}
         </Container>
       </FormProvider>
     </>
