@@ -14,6 +14,7 @@ const icon = (name: string) => (
 
 const ICONS = {
   blog: icon('ic_blog'),
+
   cart: icon('ic_cart'),
   chat: icon('ic_chat'),
   mail: icon('ic_mail'),
@@ -77,7 +78,7 @@ const navConfig = [
       // INVOICE
 
       // BLOG
-      { title: 'Create DN404', icon: ICONS.booking, path: PATH_DASHBOARD.createDn404.create, caption: DN404_DEFINE},
+      { title: 'Create DN404', icon: ICONS.label, path: PATH_DASHBOARD.createDn404.create, caption: DN404_DEFINE},
       {
         title: 'Docs',
         path: 'https://www.notion.so/Notpump-172f28f798ed4c66a4bae4b96c16d7a5?pvs=4',
