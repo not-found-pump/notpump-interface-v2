@@ -1,5 +1,5 @@
 export { default as EcommerceNewProducts } from './EcommerceNewProducts';
-export { default as EcommerceYearlySales } from './EcommerceYearlySales';
+export { default as DN404DerivativeChart } from '../app/DN404DerivativeChart';
 export { default as EcommerceBestSalesman } from './EcommerceBestSalesman';
 export { default as EcommerceSaleByGender } from './EcommerceSaleByGender';
 export { default as EcommerceSalesOverview } from './EcommerceSalesOverview';

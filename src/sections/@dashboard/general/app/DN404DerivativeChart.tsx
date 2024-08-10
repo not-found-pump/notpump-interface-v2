@@ -11,6 +11,7 @@ import Chart, { useChart } from '../../../../components/chart';
 interface Props extends CardProps {
   title?: string;
   subheader?: string;
+  height?:number;
   chart: {
     categories?: string[];
     colors?: string[];
@@ -25,7 +26,7 @@ interface Props extends CardProps {
   };
 }
 
-export default function EcommerceYearlySales({ title, subheader, chart, ...other }: Props) {
+export default function DN404DerivativeChart({ title, subheader, chart, height, ...other }: Props) {
   const { colors, categories, series, options } = chart;
 
   const [seriesData, setSeriesData] = useState('2019');
@@ -43,8 +44,8 @@ export default function EcommerceYearlySales({ title, subheader, chart, ...other
   });
 
   return (
-    <Card {...other}>
-      <CardHeader
+    <Card {...other} sx={{height:  height || 600}}>
+      {/* <CardHeader
         title={title}
         subheader={subheader}
         action={
@@ -61,12 +62,12 @@ export default function EcommerceYearlySales({ title, subheader, chart, ...other
             ))}
           </CustomSmallSelect>
         }
-      />
+      /> */}
 
       {series.map((item) => (
-        <Box key={item.year} sx={{ mt: 3, mx: 3 }} dir="ltr">
+        <Box key={item.year} sx={{ mt: 3, mx: 3, height: '100%' }} dir="ltr">
           {item.year === seriesData && (
-            <Chart type="area" series={item.data} options={chartOptions} height={364} />
+            <Chart type="area" series={item.data} options={chartOptions} height='100%' />
           )}
         </Box>
       ))}

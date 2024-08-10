@@ -2,19 +2,23 @@ import { sentenceCase } from 'change-case';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // form
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 // @mui
 import {
   Button,
   Divider,
+  Grid,
   IconButton,
   InputAdornment,
   LinearProgress,
   Stack,
+  Tab,
+  Tabs,
   Typography,
 } from '@mui/material';
 // routes
 import { alpha, styled, useTheme } from '@mui/material/styles';
+import { Box } from '@mui/system';
 import Lightbox from 'src/components/lightbox';
 import { NOTPUMP_DEFINE_FAIRLAUNCH } from 'src/descriptions/DN404';
 import useResponsive from 'src/hooks/useResponsive';
@@ -25,7 +29,6 @@ import { ICheckoutCartItem, IDN404MetaData } from '../../../../@types/DN404';
 // _mock
 import { _socials } from '../../../../_mock/arrays';
 // components
-import { ColorSinglePicker } from '../../../../components/color-utils';
 import FormProvider, { RHFTextField } from '../../../../components/hook-form';
 import Iconify from '../../../../components/iconify';
 import Label from '../../../../components/label';
@@ -36,6 +39,8 @@ import { bgGradient } from '../../../../utils/cssStyles';
 // components
 import Carousel from '../../../../components/carousel';
 import Image from '../../../../components/image';
+import { DN404DerivativeChart } from '../../general/e-commerce';
+import { AppWidgetSummary } from '../../general/app';
 
 const THUMB_SIZE = 64;
 
@@ -103,7 +108,6 @@ type Props = {
   onAddCart: (cartItem: ICheckoutCartItem) => void;
   onGotoStep: (step: number) => void;
 };
-
 export default function DN404DetailsSummary({
   cart,
   product,
@@ -202,7 +206,7 @@ export default function DN404DetailsSummary({
 
   const [selectedImage, setSelectedImage] = useState<number>(-1);
 
-  const [currentTabTrade, setCurrentTabTrade] = useState<'line' | 'candle'>('line');
+  const [currentTabTrade, setCurrentTabTrade] = useState<'trade' | 'derivative'>('trade');
 
   const imagesLightbox = product.images.map((img) => ({ src: img }));
 
@@ -213,16 +217,6 @@ export default function DN404DetailsSummary({
 
   const handleCloseLightbox = () => {
     setSelectedImage(-1);
-  };
-
-  const carouselSettings1 = {
-    dots: false,
-    arrows: false,
-    slidesToShow: 1,
-    draggable: false,
-    slidesToScroll: 1,
-    adaptiveHeight: true,
-    beforeChange: (current: number, next: number) => setCurrentIndex(next),
   };
 
   const carouselSettings2 = {
@@ -249,6 +243,197 @@ export default function DN404DetailsSummary({
     carousel1.current?.slickGoTo(currentIndex);
   }, [currentIndex]);
 
+  const TABS = [
+    {
+      value: 'trade',
+      label: 'Trade',
+      component: (
+        <Stack>
+          <Stack spacing={0.5}>
+            <Stack direction="row" alignItems="center" justifyContent="space-between">
+              <Typography variant="subtitle2">
+                {product.name.split(' ')[0].toUpperCase()} / ETH
+              </Typography>
+              <LinearProgress
+                variant="determinate"
+                value={Number(Math.random().toFixed(2)) * 100}
+                sx={{
+                  mx: 2,
+                  flexGrow: 1,
+                  mr: 0.5,
+                }}
+              />
+            </Stack>
+
+            <Stack spacing={1}>
+              <Typography
+                variant="caption"
+                component="div"
+                sx={{ textAlign: 'right', color: 'text.secondary', cursor: 'pointer' }}
+              >
+                ETH Balance: 1,23
+              </Typography>
+              <RHFTextField
+                size="small"
+                type="number"
+                name={`items[${0}].price`}
+                value={0.001}
+                label="WETH amount"
+                placeholder="0"
+                onChange={(event) => {}}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">-</InputAdornment>,
+                }}
+                sx={{ width: '100%' }}
+              />
+            </Stack>
+            <Stack spacing={1} sx={{ pt: 1 }}>
+              <div style={{ width: '100%', textAlign: 'center' }}>
+                <IconButton sx={{ height: 40, width: 40 }}>⇅</IconButton>
+              </div>
+            </Stack>
+            <Stack spacing={1}>
+              <Typography
+                variant="caption"
+                component="div"
+                sx={{ textAlign: 'right', color: 'text.secondary', cursor: 'pointer' }}
+              >
+                {product.name.split(' ')[0].toUpperCase()} Balance: 15k
+              </Typography>
+              <RHFTextField
+                size="small"
+                type="number"
+                name={`items[${0}].price`}
+                value={12050}
+                label={`${product.name.split(' ')[0].toUpperCase()} amount`}
+                placeholder="0"
+                onChange={(event) => {}}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">+</InputAdornment>,
+                }}
+                sx={{ width: '100%' }}
+              />
+            </Stack>
+          </Stack>
+          <Stack direction="row" spacing={2} sx={{ pt: 2 }}>
+            <Button
+              fullWidth
+              disabled={isMaxQuantity}
+              size="large"
+              color="success"
+              variant="contained"
+              onClick={handleAddCart}
+              sx={{ whiteSpace: 'nowrap' }}
+            >
+              Buy
+            </Button>
+
+            <Button fullWidth color="error" size="large" type="submit" variant="contained">
+              Sell
+            </Button>
+          </Stack>
+        </Stack>
+      ),
+    },
+    {
+      value: 'derivative',
+      label: `Derivative`,
+      component: (
+        <Stack>
+          <Stack spacing={0.5}>
+            <Stack direction="row" alignItems="center" justifyContent="space-between">
+              <Typography variant="subtitle2">
+                {product.name.split(' ')[0].toUpperCase()} / ETH
+              </Typography>
+              <LinearProgress
+                variant="determinate"
+                value={Number(Math.random().toFixed(2)) * 100}
+                sx={{
+                  mx: 2,
+                  flexGrow: 1,
+                  mr: 0.5,
+                }}
+              />
+            </Stack>
+
+            <Stack spacing={1}>
+              <Typography
+                variant="caption"
+                component="div"
+                sx={{ textAlign: 'right', color: 'text.secondary', cursor: 'pointer' }}
+              >
+                ETH Balance: 1,23
+              </Typography>
+              <RHFTextField
+                size="small"
+                type="number"
+                name={`items[${0}].price`}
+                value={0.001}
+                label="WETH amount"
+                placeholder="0"
+                onChange={(event) => {}}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">-</InputAdornment>,
+                }}
+                sx={{ width: '100%' }}
+              />
+            </Stack>
+          </Stack>
+          <Grid container spacing={2} sx={{pt:2}}>
+            <Grid item xs={12} md={6}>
+              <AppWidgetSummary
+                title="Bullish pool"
+                percent={2.6}
+                total={1865}
+                chart={{
+                  colors: [theme.palette.primary.main],
+                  series: [5, 18, 12, 51, 68, 11, 39, 37, 27, 20],
+                }}
+              />
+            </Grid>
+
+            <Grid item xs={12} md={6}>
+              <AppWidgetSummary
+                title="Bearish pool"
+                percent={-1.2}
+                total={487}
+                chart={{
+                  colors: [theme.palette.error.main],
+                  series: [20, 41, 63, 33, 28, 35, 50, 46, 11, 26],
+                }}
+              />
+            </Grid>
+          </Grid>
+
+          <Stack direction="row" spacing={2} sx={{ pt: 2 }}>
+            <Button
+              fullWidth
+              disabled={isMaxQuantity}
+              size="large"
+              color="success"
+              variant="contained"
+              onClick={handleAddCart}
+              sx={{ whiteSpace: 'nowrap' }}
+              endIcon="⇡"
+            >
+              Bullish
+            </Button>
+
+            <Button
+              endIcon="⇣"
+              fullWidth
+              color="error"
+              size="large"
+              type="submit"
+              variant="contained"
+            >
+              Bearish
+            </Button>
+          </Stack>
+        </Stack>
+      ),
+    },
+  ];
   const renderThumbnails = (
     <StyledThumbnailsContainer length={product.images.length} sx={{ pt: 3 }}>
       <Carousel {...carouselSettings2} asNavFor={nav1} ref={carousel2}>
@@ -319,106 +504,30 @@ export default function DN404DetailsSummary({
               {renderThumbnails}
             </Typography>
           </Stack>
-
-          {/* <Typography variant="h4">
-            {priceSale && (
-              <Box
-                component="span"
-                sx={{ color: 'text.disabled', textDecoration: 'line-through', mr: 0.5 }}
-              >
-                {fCurrency(priceSale)}
-              </Box>
-            )}
-
-            {fCurrency(price)}
-          </Typography> */}
         </Stack>
+        <Box>
+          <Tabs
+            value={currentTabTrade}
+            onChange={(event, value) => {
+              setCurrentTabTrade(value);
+            }}
+            sx={{ px: 3, bgcolor: 'background.neutral', borderRadius: '10px' }}
+          >
+            {TABS.map((tab) => (
+              <Tab key={tab.value} value={tab.value} label={tab.label} />
+            ))}
+          </Tabs>
+        </Box>
 
         <Divider sx={{ borderStyle: 'dashed' }} />
-        <Stack spacing={0.5}>
-          <Stack direction="row" alignItems="center" justifyContent="space-between">
-            <Typography variant="subtitle2">
-              {product.name.split(' ')[0].toUpperCase()} / ETH
-            </Typography>
-            <LinearProgress
-              variant="determinate"
-              value={Number(Math.random().toFixed(2)) * 100}
-              sx={{
-                mx: 2,
-                flexGrow: 1,
-                mr: 0.5,
-              }}
-            />
-          </Stack>
-
-          <Stack spacing={1}>
-            <Typography
-              variant="caption"
-              component="div"
-              sx={{ textAlign: 'right', color: 'text.secondary', cursor: 'pointer' }}
-            >
-              ETH Balance: 1,23
-            </Typography>
-            <RHFTextField
-              size="small"
-              type="number"
-              name={`items[${0}].price`}
-              value={0.001}
-              label="WETH amount"
-              placeholder="0"
-              onChange={(event) => {}}
-              InputProps={{
-                startAdornment: <InputAdornment position="start">-</InputAdornment>,
-              }}
-              sx={{ width: '100%' }}
-            />
-          </Stack>
-          <Stack spacing={1} sx={{pt: 1}}>
-            <div style={{width:"100%", textAlign:'center'}}>
-              <IconButton sx={{height: 40, width: 40}}>⇅</IconButton> 
-            </div>
-          </Stack>
-          <Stack spacing={1}>
-            <Typography
-              variant="caption"
-              component="div"
-              sx={{ textAlign: 'right', color: 'text.secondary', cursor: 'pointer' }}
-            >
-              {product.name.split(' ')[0].toUpperCase()} Balance: 15k
-            </Typography>
-            <RHFTextField
-              size="small"
-              type="number"
-              name={`items[${0}].price`}
-              value={12050}
-              label={`${product.name.split(' ')[0].toUpperCase()} amount`}
-              placeholder="0"
-              onChange={(event) => {}}
-              InputProps={{
-                startAdornment: <InputAdornment position="start">+</InputAdornment>,
-              }}
-              sx={{ width: '100%' }}
-            />
-          </Stack>
-
-        </Stack>
-        <Stack direction="row" spacing={2}>
-            <Button
-              fullWidth
-              disabled={isMaxQuantity}
-              size="large"
-              color="success"
-              variant="contained"
-              onClick={handleAddCart}
-              sx={{ whiteSpace: 'nowrap' }}
-            >
-              Buy
-            </Button>
-
-            <Button fullWidth color="error" size="large" type="submit" variant="contained">
-              Sell
-            </Button>
-          </Stack>
+        {TABS.map(
+          (tab) =>
+            tab.value === currentTabTrade && (
+              <Box key={tab.value} sx={{ mt: 5 }}>
+                {tab.component}
+              </Box>
+            )
+        )}
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Stack direction="row" alignItems="center" justifyContent="center">

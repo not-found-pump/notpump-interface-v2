@@ -13,6 +13,10 @@ import {
   Typography,
 } from '@mui/material';
 // utils
+import { TX, WALLET } from 'src/descriptions/DN404';
+import { formatAddress } from 'src/utils/formatAddress';
+import { randomInArray } from 'src/_mock';
+import { useTheme } from '@mui/system';
 import { fDate } from '../../../../utils/formatTime';
 import { fCurrency } from '../../../../utils/formatNumber';
 // @types
@@ -44,7 +48,7 @@ export default function InvoiceTableRow({
   onDeleteRow,
 }: Props) {
   const { sent, invoiceNumber, createDate, dueDate, status, invoiceTo, totalPrice } = row;
-
+  const theme = useTheme();
   const [openConfirm, setOpenConfirm] = useState(false);
 
   const [openPopover, setOpenPopover] = useState<HTMLElement | null>(null);
@@ -67,61 +71,67 @@ export default function InvoiceTableRow({
 
   return (
     <>
-      <TableRow hover selected={selected}>
-        <TableCell padding="checkbox">
-          <Checkbox checked={selected} onClick={onSelectRow} />
-        </TableCell>
+      <TableRow hover>
+      <TableCell align="left">{fDate(createDate)}</TableCell>
 
         <TableCell>
           <Stack direction="row" alignItems="center" spacing={2}>
-            <CustomAvatar name={invoiceTo.name} />
-
+            {/* <CustomAvatar name={invoiceTo.name} /> */}
             <div>
-              <Typography variant="subtitle2" noWrap>
+              {/* <Typography variant="subtitle2" noWrap>
                 {invoiceTo.name}
-              </Typography>
+              </Typography> */}
 
               <Link
                 noWrap
                 variant="body2"
-                onClick={onViewRow}
+                // onClick={onViewRow}
                 sx={{ color: 'text.disabled', cursor: 'pointer' }}
               >
-                {`INV-${invoiceNumber}`}
+                {`${formatAddress(WALLET)}`}
               </Link>
             </div>
           </Stack>
         </TableCell>
 
-        <TableCell align="left">{fDate(createDate)}</TableCell>
-
-        <TableCell align="left">{fDate(dueDate)}</TableCell>
-
-        <TableCell align="center">{fCurrency(totalPrice)}</TableCell>
-
-        <TableCell align="center" sx={{ textTransform: 'capitalize' }}>
-          {sent}
-        </TableCell>
-
         <TableCell align="left">
           <Label
             variant="soft"
-            color={
-              (status === 'paid' && 'success') ||
-              (status === 'unpaid' && 'warning') ||
-              (status === 'overdue' && 'error') ||
-              'default'
-            }
+            color={(status === 'buy' && 'success') || (status === 'sell' && 'error') || 'default'}
           >
             {status}
           </Label>
         </TableCell>
 
-        <TableCell align="right">
+        <TableCell align="center">{fCurrency((Math.random() * 100).toFixed(4))}</TableCell>
+
+        <TableCell align="left">{fCurrency(totalPrice / 100_00)}</TableCell>
+        <TableCell align="center">{(Math.random() * 100).toFixed(0)}k</TableCell>
+        <TableCell align="center">
+          <Typography
+            variant="subtitle2"
+            sx={{ color: randomInArray([theme.palette.success.main, theme.palette.error.main]) }}
+          >
+            {fCurrency((Math.random() * 100).toFixed(4))}
+          </Typography>
+        </TableCell>
+
+        <TableCell align="center" sx={{ textTransform: 'capitalize' }}>
+          <Link
+            noWrap
+            variant="body2"
+            // onClick={onViewRow}
+            sx={{ color: 'text.disabled', cursor: 'pointer' }}
+          >
+            {formatAddress(TX)}
+          </Link>
+        </TableCell>
+
+        {/* <TableCell align="right">
           <IconButton color={openPopover ? 'inherit' : 'default'} onClick={handleOpenPopover}>
             <Iconify icon="eva:more-vertical-fill" />
           </IconButton>
-        </TableCell>
+        </TableCell> */}
       </TableRow>
 
       <MenuPopover

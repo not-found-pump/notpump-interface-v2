@@ -31,7 +31,7 @@ export default function DN404CandleChart({ height }: Props) {
         title="Trading Chart"
         width="100%"
         height="100%"
-        src="https://www.dextools.io/widget-chart/en/ether/pe-light/0xa29fe6ef9592b5d408cca961d0fb9b1faf497d6d?theme=dark&chartType=1&chartResolution=30&drawingToolbars=false"
+        src="https://www.dextools.io/widget-chart/en/ether/pe-light/0xa29fe6ef9592b5d408cca961d0fb9b1faf497d6d?theme=dark&chartType=1&chartResolution=30&drawingToolbars=false&headerColor=000000&tvPlatformColor=000000&tvPaneColor=000000"
       />
     </Card>
   );

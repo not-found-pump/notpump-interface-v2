@@ -18,7 +18,7 @@ import { formatAddress } from 'src/utils/formatAddress';
 import ProgressLinear from 'src/sections/_examples/mui/progress/ProgressLinear';
 import { color } from '@mui/system';
 import { useLocales } from 'src/locales';
-import {NOTPUMP_DEFINE_FAIRLAUNCH} from 'src/descriptions/DN404';
+import {NOTPUMP_DEFINE_FAIRLAUNCH, WALLET} from 'src/descriptions/DN404';
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // utils
 import { fCurrency, fShortenNumber } from '../../../../utils/formatNumber';
@@ -38,8 +38,6 @@ import { ColorPreview } from '../../../../components/color-utils';
 type Props = {
   product: IDN404MetaData;
 };
-const WALLET = '0xDA216D50E16fBcf7AbF71A68403FcCf39Cc884e0';
-
 export default function DN404Card({ product }: Props) {
   const { id, name, coverUrl, price, colors, status, available, sizes, priceSale, description } =
     product;

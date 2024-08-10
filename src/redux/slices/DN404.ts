@@ -3,9 +3,11 @@ import uniq from 'lodash/uniq';
 import uniqBy from 'lodash/uniqBy';
 import { createSlice, Dispatch } from '@reduxjs/toolkit';
 // utils
+import {randomInArray} from 'src/_mock';
 import axios from '../../utils/axios';
 import { IDN404MetaDataState, ICheckoutCartItem } from '../../@types/DN404';
-import DN404Inprogress from "../../DN404.list.json"
+// import DN404Inprogress from "../../DN404.list.json"
+import DN404Medias from "../../DN404.media.json"
 // ----------------------------------------------------------------------
 
 const initialState: IDN404MetaDataState = {
@@ -197,7 +199,14 @@ export function getProducts() {
     dispatch(slice.actions.startLoading());
     try {
       const response = await axios.get('/api/product/list');
-      dispatch(slice.actions.getProductsSuccess(response.data.products));
+      const _products = response.data.products
+      // eslint-disable-next-line array-callback-return
+      _products.map((p:any,_:number) => {
+        _products[_].images = [randomInArray(DN404Medias),randomInArray(DN404Medias),randomInArray(DN404Medias),randomInArray(DN404Medias),randomInArray(DN404Medias),randomInArray(DN404Medias)]
+        _products[_].coverUrl = randomInArray(DN404Medias)
+      })
+      console.log(_products)
+      dispatch(slice.actions.getProductsSuccess(_products));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }
@@ -213,7 +222,10 @@ export function getProduct(name: string) {
       const response = await axios.get('/api/product/details', {
         params: { productId: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b2' },
       });
-      dispatch(slice.actions.getProductSuccess(response.data.product));
+      const _product = response.data.product
+      _product.images = [randomInArray(DN404Medias),randomInArray(DN404Medias),randomInArray(DN404Medias),randomInArray(DN404Medias),randomInArray(DN404Medias),randomInArray(DN404Medias)]
+      _product.coverUrl = randomInArray(DN404Medias)
+      dispatch(slice.actions.getProductSuccess(_product));
     } catch (error) {
       console.error(error);
       dispatch(slice.actions.hasError(error));

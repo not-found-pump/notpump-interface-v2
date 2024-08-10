@@ -59,12 +59,15 @@ const SERVICE_OPTIONS = [
 ];
 
 const TABLE_HEAD = [
-  { id: 'invoiceNumber', label: 'Client', align: 'left' },
-  { id: 'createDate', label: 'Create', align: 'left' },
-  { id: 'dueDate', label: 'Due', align: 'left' },
-  { id: 'price', label: 'Amount', align: 'center', width: 140 },
-  { id: 'sent', label: 'Sent', align: 'center', width: 140 },
+  { id: 'createDate', label: 'Create at', align: 'left' },
+  { id: 'wallet', label: 'Wallet', align: 'left' },
   { id: 'status', label: 'Status', align: 'left' },
+  { id: 'amount', label: 'Amount', align: 'center', width: 140 },
+  { id: 'price', label: 'Price', align: 'left' },
+  { id: 'hold', label: 'hold', align: 'left' },
+  { id: 'pnl', label: 'pnl', align: 'left' },
+  { id: 'tx', label: 'tx', align: 'left' },
+
   { id: '' },
 ];
 
@@ -151,10 +154,9 @@ export default function DN404TradeHistory() {
 
   const TABS = [
     { value: 'all', label: 'All', color: 'info', count: tableData.length },
-    { value: 'paid', label: 'Paid', color: 'success', count: getLengthByStatus('paid') },
-    { value: 'unpaid', label: 'Unpaid', color: 'warning', count: getLengthByStatus('unpaid') },
-    { value: 'overdue', label: 'Overdue', color: 'error', count: getLengthByStatus('overdue') },
-    { value: 'draft', label: 'Draft', color: 'default', count: getLengthByStatus('draft') },
+    { value: 'buy', label: 'buy', color: 'success', count: getLengthByStatus('buy') },
+    { value: 'sell', label: 'sell', color: 'error', count: getLengthByStatus('sell') },
+    { value: 'dev', label: 'dev', color: 'default', count: getLengthByStatus('dev') },
   ] as const;
 
   const handleOpenConfirm = () => {
@@ -250,27 +252,27 @@ export default function DN404TradeHistory() {
 
               <DN404TransactionAnalytic
                 title="Buy"
-                total={getLengthByStatus('paid')}
-                percent={getPercentByStatus('paid')}
-                price={getTotalPriceByStatus('paid')}
+                total={getLengthByStatus('buy')}
+                percent={getPercentByStatus('buy')}
+                price={getTotalPriceByStatus('buy')}
                 icon="eva:checkmark-circle-2-fill"
                 color={theme.palette.success.main}
               />
 
               <DN404TransactionAnalytic
                 title="Sell"
-                total={getLengthByStatus('overdue')}
-                percent={getPercentByStatus('overdue')}
-                price={getTotalPriceByStatus('overdue')}
+                total={getLengthByStatus('sell')}
+                percent={getPercentByStatus('sell')}
+                price={getTotalPriceByStatus('sell')}
                 icon="eva:bell-fill"
                 color={theme.palette.error.main}
               />
 
               <DN404TransactionAnalytic
                 title="Dev"
-                total={getLengthByStatus('draft')}
-                percent={getPercentByStatus('draft')}
-                price={getTotalPriceByStatus('draft')}
+                total={getLengthByStatus('dev')}
+                percent={getPercentByStatus('dev')}
+                price={getTotalPriceByStatus('dev')}
                 icon="eva:file-fill"
                 color={theme.palette.text.secondary}
               />
@@ -302,7 +304,7 @@ export default function DN404TradeHistory() {
           </Tabs>
 
           <Divider />
-
+{/* 
           <InvoiceTableToolbar
             isFiltered={isFiltered}
             filterName={filterName}
@@ -319,7 +321,7 @@ export default function DN404TradeHistory() {
             onFilterEndDate={(newValue) => {
               setFilterEndDate(newValue);
             }}
-          />
+          /> */}
 
           <TableContainer sx={{ position: 'relative', overflow: 'unset' }}>
             <TableSelectedAction
@@ -370,12 +372,12 @@ export default function DN404TradeHistory() {
                   rowCount={tableData.length}
                   numSelected={selected.length}
                   onSort={onSort}
-                  onSelectAllRows={(checked) =>
-                    onSelectAllRows(
-                      checked,
-                      tableData.map((row) => row.id)
-                    )
-                  }
+                  // onSelectAllRows={(checked) =>
+                  //   onSelectAllRows(
+                  //     checked,
+                  //     tableData.map((row) => row.id)
+                  //   )
+                  // }
                 />
 
                 <TableBody>

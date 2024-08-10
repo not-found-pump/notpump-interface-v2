@@ -5,12 +5,14 @@ import {useTheme} from '@mui/material/styles';
 // utils
 import useResponsive from 'src/hooks/useResponsive';
 // @types
+import {Stack} from '@mui/system';
 import {IDN404MetaData} from '../../../../@types/DN404';
 // components
 import Carousel from '../../../../components/carousel';
 import Lightbox from '../../../../components/lightbox';
 import {DN404LineChart} from '../../general/app';
 import DN404CandleChart from '../../general/app/DN404CandleChart';
+import {DN404DerivativeChart} from '../../general/e-commerce';
 
 // ----------------------------------------------------------------------
 
@@ -91,7 +93,7 @@ export default function DN404DetailsCarousel({ product }: Props) {
 
   const [selectedImage, setSelectedImage] = useState<number>(-1);
 
-  const [currentTabTrade, setCurrentTabTrade] = useState<'line' | 'candle'>('candle');
+  const [currentTabTrade, setCurrentTabTrade] = useState<'line' | 'candle'>(isDesktop ? 'candle' : 'line');
 
   const imagesLightbox = product.images.map((img) => ({ src: img }));
 
@@ -138,14 +140,6 @@ export default function DN404DetailsCarousel({ product }: Props) {
     carousel1.current?.slickGoTo(currentIndex);
   }, [currentIndex]);
 
-  const handlePrev = () => {
-    carousel2.current?.slickPrev();
-  };
-
-  const handleNext = () => {
-    carousel2.current?.slickNext();
-  };
-
   const candleChart = (
     <Card sx={{ p: 1, height: isDesktop ? 600 : 300 }}>
       <DN404CandleChart />
@@ -171,18 +165,57 @@ export default function DN404DetailsCarousel({ product }: Props) {
       }}
     />
   );
-  const TABS = [
-    {
-      value: 'line',
-      label: 'Curve Line',
-      component: lineChart,
-    },
-    {
-      value: 'candle',
-      label: `Candle`,
-      component: candleChart,
-    },
-  ];
+  const derivativeInfor = (
+    <Stack>
+      <DN404DerivativeChart
+        title="Yearly Sales"
+        subheader="(+43%) than last year"
+        height={isDesktop ? 600 : 300}
+        chart={{
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+          series: [
+            {
+              year: '2019',
+              data: [
+                { name: 'Bullish', data: [10, 41, 35, 151, 49, 62, 69, 91, 48] },
+                { name: 'Bearish', data: [10, 34, 13, 56, 77, 88, 99, 77, 45] },
+              ],
+            },
+          ],
+        }}
+      />
+    </Stack>
+  );
+  const TABS = isDesktop
+    ? [
+        {
+          value: 'line',
+          label: 'Curve Line',
+          component: lineChart,
+        },
+        {
+          value: 'candle',
+          label: `Curve Candle`,
+          component: candleChart,
+        },
+        {
+          value: 'derivative',
+          label: `Community derivative`,
+          component: derivativeInfor,
+        },
+      ]
+    : [
+        {
+          value: 'line',
+          label: 'Curve Line',
+          component: lineChart,
+        },
+        {
+          value: 'derivative',
+          label: `Community derivative`,
+          component: derivativeInfor,
+        },
+      ];
 
   // const renderLargeImg = (
   //   <Box sx={{ mb: 3, borderRadius: 2, overflow: 'hidden', position: 'relative' }}>

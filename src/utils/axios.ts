@@ -10,5 +10,9 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => Promise.reject((error.response && error.response.data) || 'Something went wrong')
 );
+export function randomInArray<T>(array: T[]) {
+  return array[Math.floor(Math.random() * array.length)];
+}
 
 export default axiosInstance;
+

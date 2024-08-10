@@ -124,13 +124,13 @@ export default function DN404DetailsPage() {
             </Grid>
 
             <Box
-              gap={5}
+              gap={2}
               display="grid"
               gridTemplateColumns={{
                 xs: 'repeat(1, 1fr)',
                 md: 'repeat(3, 1fr)',
               }}
-              sx={{ my: 2 }}
+              sx={{ my: 1 }}
             >
               {/* {SUMMARY.map((item) => (
                 <Box key={item.title} sx={{ textAlign: 'center' }}>

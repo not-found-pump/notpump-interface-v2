@@ -16,7 +16,7 @@ import { useSettingsContext } from '../../components/settings';
 // sections
 import {
   EcommerceNewProducts,
-  EcommerceYearlySales,
+  DN404DerivativeChart,
   EcommerceBestSalesman,
   EcommerceSaleByGender,
   EcommerceWidgetSummary,
@@ -116,7 +116,7 @@ export default function GeneralEcommercePage() {
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
-            <EcommerceYearlySales
+            <DN404DerivativeChart
               title="Yearly Sales"
               subheader="(+43%) than last year"
               chart={{

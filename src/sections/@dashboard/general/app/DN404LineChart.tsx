@@ -37,9 +37,6 @@ export default function DN404LineChart({ title, subheader, chart, height, ...oth
       categories,
     },
     ...options,
-    grid: {
-      show: false
-    }
   });
 
   return (
@@ -47,7 +44,7 @@ export default function DN404LineChart({ title, subheader, chart, height, ...oth
       {series.map((item) => (
         <Box key={item.year} sx={{p: 0, height: '100%'}} dir="ltr">
           {item.year === seriesData && (
-            <Chart type="line"  series={item.data} options={chartOptions} height="100%"/>
+            <Chart type="area"  series={item.data} options={chartOptions} height="100%"/>
           )}
         </Box>
       ))}
