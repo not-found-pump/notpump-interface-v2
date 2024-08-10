@@ -8,6 +8,7 @@ import {randomInArray} from 'src/utils/axios';
 import {WALLET} from 'src/descriptions/DN404';
 import {formatAddress} from 'src/utils/formatAddress';
 import {fCurrency} from 'src/utils/formatNumber';
+import { Web3ModalNetworkButton, Web3ModalWalletButton} from 'src/auth/Web3ModalButtons';
 import { PATH_DASHBOARD, PATH_AUTH } from '../../../routes/paths';
 // auth
 import { useAuthContext } from '../../../auth/useAuthContext';
@@ -73,10 +74,14 @@ export default function AccountPopover() {
 
   return (
     <>
-      <Typography variant="subtitle2" noWrap sx={{ display:'flex'}}>
+      {/* <Typography variant="subtitle2" noWrap sx={{ display:'flex'}}>
             {user?.displayName || formatAddress(WALLET)} <Typography variant="subtitle2" sx={{pl: 1, color: 'text.disabled'}}> ({balance})</Typography> 
-          </Typography>
-      <IconButtonAnimate
+        </Typography> */}
+      <Stack direction="row" alignItems="center" spacing={2}>
+        <Web3ModalNetworkButton/>
+        <Web3ModalWalletButton/>
+      </Stack>
+      {/* <IconButtonAnimate
         onClick={handleOpenPopover}
         sx={{
           p: 0,
@@ -94,7 +99,7 @@ export default function AccountPopover() {
         }}
       >
         <CustomAvatar src={user?.photoURL || avatar} alt={user?.displayName} name={user?.displayName} />
-      </IconButtonAnimate>
+      </IconButtonAnimate> */}
 
       <MenuPopover open={openPopover} onClose={handleClosePopover} sx={{ width: 200, p: 0 }}>
         <Box sx={{ my: 1.5, px: 2.5 }}>
