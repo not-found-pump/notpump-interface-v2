@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem } from '@mui/material';
 // routes
+import {randomInArray} from 'src/utils/axios';
+import {WALLET} from 'src/descriptions/DN404';
+import {formatAddress} from 'src/utils/formatAddress';
+import {fCurrency} from 'src/utils/formatNumber';
 import { PATH_DASHBOARD, PATH_AUTH } from '../../../routes/paths';
 // auth
 import { useAuthContext } from '../../../auth/useAuthContext';
@@ -12,18 +16,18 @@ import { CustomAvatar } from '../../../components/custom-avatar';
 import { useSnackbar } from '../../../components/snackbar';
 import MenuPopover from '../../../components/menu-popover';
 import { IconButtonAnimate } from '../../../components/animate';
-
+import DN404Medias from "../../../DN404.media.json"
 // ----------------------------------------------------------------------
 
 const OPTIONS = [
   {
     label: 'Home',
-    linkTo: '/',
+    linkTo: '/dashboard/app',
   },
-  {
-    label: 'Profile',
-    linkTo: PATH_DASHBOARD.user.profile,
-  },
+  // {
+  //   label: 'Profile',
+  //   linkTo: PATH_DASHBOARD.user.profile,
+  // },
   {
     label: 'Settings',
     linkTo: PATH_DASHBOARD.user.account,
@@ -64,9 +68,14 @@ export default function AccountPopover() {
     handleClosePopover();
     navigate(path);
   };
+  const avatar = useMemo(() => randomInArray(DN404Medias),[])
+  const balance = useMemo(() => fCurrency((Math.random() * 100)),[])
 
   return (
     <>
+      <Typography variant="subtitle2" noWrap sx={{ display:'flex'}}>
+            {user?.displayName || formatAddress(WALLET)} <Typography variant="subtitle2" sx={{pl: 1, color: 'text.disabled'}}> ({balance})</Typography> 
+          </Typography>
       <IconButtonAnimate
         onClick={handleOpenPopover}
         sx={{
@@ -84,13 +93,13 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <CustomAvatar src={user?.photoURL} alt={user?.displayName} name={user?.displayName} />
+        <CustomAvatar src={user?.photoURL || avatar} alt={user?.displayName} name={user?.displayName} />
       </IconButtonAnimate>
 
       <MenuPopover open={openPopover} onClose={handleClosePopover} sx={{ width: 200, p: 0 }}>
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle2" noWrap>
-            {user?.displayName}
+            {user?.displayName || formatAddress(WALLET)}
           </Typography>
 
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>

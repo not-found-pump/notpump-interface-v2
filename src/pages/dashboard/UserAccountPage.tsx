@@ -57,12 +57,12 @@ export default function UserAccountPage() {
       icon: <Iconify icon="eva:share-fill" />,
       component: <AccountSocialLinks socialLinks={_userAbout.socialLinks} />,
     },
-    {
-      value: 'change_password',
-      label: 'Change password',
-      icon: <Iconify icon="ic:round-vpn-key" />,
-      component: <AccountChangePassword />,
-    },
+    // {
+    //   value: 'change_password',
+    //   label: 'Change password',
+    //   icon: <Iconify icon="ic:round-vpn-key" />,
+    //   component: <AccountChangePassword />,
+    // },
   ];
 
   return (
