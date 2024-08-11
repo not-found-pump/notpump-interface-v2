@@ -3,4 +3,3 @@ export const NOTPUMP_DN404=`Notpump use DN404 standard to generate tokens, ${DN4
 export const NOTPUMP_DEFINE_FAIRLAUNCH="When achieve 100% of the bonding curve ~$69k Market Cap and use the raised liquidity to launch projects on DEX (Uniswap), driving potential exponential growth."
 export const WALLET = '0xDA216D50E16fBcf7AbF71A68403FcCf39Cc884e0';
 export const TX='0xf3c8f6962bbd93a7d8ab8d7b345b217a1bc2735d3a2d99111f5cf3d2c6760109'
-export const aa = 'build'
