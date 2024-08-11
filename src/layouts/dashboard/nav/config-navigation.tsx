@@ -70,7 +70,7 @@ const navConfig = [
       // USER
       // { title: 'wallet', icon: ICONS.user, path: PATH_DASHBOARD.user.profile },
       {
-        title: 'DN404 fairlaunch',
+        title: 'Top DN404',
         path: PATH_DASHBOARD.dn404.root,
         icon: ICONS.menuItem,
         caption: 'NotPump use DN404 as a main token - is an implementation of a co-joined ERC20 and ERC721 pair.',
