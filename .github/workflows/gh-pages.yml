@@ -23,6 +23,9 @@ jobs:
 
       - name: Build project
         run: yarn build
+        env:
+          CI: ""
+          REACT_APP_HOST_API_KEY: "https://api-prod-minimal-v6.pages.dev/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
