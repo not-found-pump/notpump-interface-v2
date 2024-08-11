@@ -3,6 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { AppBar, Toolbar, Box, BoxProps, Link } from '@mui/material';
 // config
+import Label from 'src/components/label';
 import { HEADER } from '../../config-global';
 // utils
 import { bgBlur } from '../../utils/cssStyles';
@@ -42,6 +43,7 @@ export default function Header({ isOffset }: Props) {
         }}
       >
         <Logo />
+       
 
         <Link to={PATH_PAGE.faqs} component={RouterLink} variant="subtitle2" color="inherit">
           Need Help?

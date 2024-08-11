@@ -92,25 +92,25 @@ const StyledEllipseBottom = styled('div')(({ theme }) => ({
 export default function HomeHero() {
   const isDesktop = useResponsive('up', 'md');
 
-  const { scrollYProgress } = useScroll();
+  // const { scrollYProgress } = useScroll();
 
-  const [hide, setHide] = useState(false);
+  // const [hide, setHide] = useState(false);
 
-  useEffect(
-    () =>
-      scrollYProgress.onChange((scrollHeight) => {
-        if (scrollHeight > 0.8) {
-          setHide(true);
-        } else {
-          setHide(false);
-        }
-      }),
-    [scrollYProgress]
-  );
+  // useEffect(
+  //   () =>
+  //     scrollYProgress.onChange((scrollHeight) => {
+  //       if (scrollHeight > 0.8) {
+  //         setHide(true);
+  //       } else {
+  //         setHide(false);
+  //       }
+  //     }),
+  //   [scrollYProgress]
+  // );
 
-  if (hide) {
-    return null;
-  }
+  // if (hide) {
+  //   return null;
+  // }
 
   return (
     <>
@@ -188,7 +188,7 @@ function Description() {
                 },
               }}
             >
-              Live Preview
+              Dapp (BETA)
             </Button>
 
             <Link
@@ -196,11 +196,11 @@ function Description() {
               variant="caption"
               target="_blank"
               rel="noopener"
-              href={PATH_FREE_VERSION}
+              href="https://github.com/not-found-pump"
               sx={{ textDecoration: 'underline', display: 'inline-flex', alignItems: 'center' }}
             >
               <Iconify icon="eva:external-link-fill" width={16} sx={{ mr: 0.5 }} />
-              Get Free Version
+              Notpump Github
             </Link>
           </Stack>
 
@@ -211,27 +211,14 @@ function Description() {
             startIcon={<Iconify icon="eva:external-link-fill" width={24} />}
             target="_blank"
             rel="noopener"
-            href={PATH_FIGMA_PREVIEW}
+            href="https://github.com/not-found-pump/dn404"
             sx={{ borderColor: 'text.primary' }}
           >
-            Design Preview
+            DN404 Docs
           </Button>
         </Stack>
       </m.div>
 
-      <Stack spacing={3} sx={{ textAlign: 'center', opacity: 0.4 }}>
-        <m.div variants={varFade().in}>
-          <Typography variant="overline">Available For</Typography>
-        </m.div>
-
-        <Stack spacing={2} direction="row" justifyContent="center">
-          {['sketch', 'figma', 'js', 'ts', 'nextjs'].map((platform) => (
-            <m.div key={platform} variants={varFade().in}>
-              <SvgColor src={`/assets/icons/platforms/ic_${platform}.svg`} />
-            </m.div>
-          ))}
-        </Stack>
-      </Stack>
     </StyledDescription>
   );
 }

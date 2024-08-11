@@ -45,7 +45,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function HomeMinimal() {
+export default function HomeNotPump() {
   return (
     <StyledRoot>
       <Container component={MotionViewport}>
@@ -64,7 +64,7 @@ export default function HomeMinimal() {
 
           <m.div variants={varFade().inDown}>
             <Typography variant="h2">
-              What minimal <br /> helps you?
+              What NotPump <br /> helps you?
             </Typography>
           </m.div>
         </Stack>

@@ -40,6 +40,7 @@ export default function NavMobile({ isOffset, data }: NavProps) {
         onClick={handleOpen}
         sx={{
           ml: 1,
+          mr: 2,
           ...(isOffset && {
             color: 'text.primary',
           }),
