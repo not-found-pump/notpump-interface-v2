@@ -59,7 +59,7 @@ export default function Footer() {
         <Typography variant="caption" component="div">
           © All rights reserved
           <br /> made by &nbsp;
-          <Link href="https://minimals.cc/"> minimals.cc </Link>
+          <Link href="#">Notpump </Link>
         </Typography>
       </Container>
     </Box>

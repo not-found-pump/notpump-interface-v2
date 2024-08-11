@@ -146,8 +146,7 @@ function Description() {
     <StyledDescription>
       <m.div variants={varFade().in}>
         <Typography variant="h2" sx={{ textAlign: 'center' }}>
-          Start a <br />
-          new project with
+         User-Friendly NFT and Token Ecosystem
         </Typography>
       </m.div>
 
@@ -161,14 +160,13 @@ function Description() {
             repeat: Infinity,
           }}
         >
-          Minimal
+          Notpump
         </StyledGradientText>
       </m.div>
 
       <m.div variants={varFade().in}>
         <Typography variant="body2" sx={{ textAlign: 'center' }}>
-          The starting point for your next project is based on MUI.Easy customization Helps you
-          build apps faster and better.
+        Generate user-friendly NFTs and tokens effortlessly with DN-404 (ERC-404), all for a very low cost, starting at just ~$0.2.
         </Typography>
       </m.div>
 

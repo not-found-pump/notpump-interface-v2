@@ -49,7 +49,7 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title> The starting point for your next project | NotPump</title>
+        <title> The starting point for your NFT project | NotPump</title>
       </Helmet>
 
       {progress}
@@ -64,7 +64,7 @@ export default function HomePage() {
         }}
       >
         <HomeMinimal />
-
+{/* 
         <HomeHugePackElements />
 
         <HomeForDesigner />
@@ -79,7 +79,7 @@ export default function HomePage() {
 
         <HomeLookingFor />
 
-        <HomeAdvertisement />
+        <HomeAdvertisement /> */}
       </Box>
     </>
   );
